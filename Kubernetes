@@ -834,4 +834,99 @@ evOps + Azure Role
 ====
 
 
+What is Ingress in Kubernetes?
+How is Ingress different from a Service (NodePort / LoadBalancer)?
+How does Ingress handle HTTP vs HTTPS routing?
+What is an SSL/TLS certificate, and how is it used in Ingress?
+What is an Ingress Controller? Can Kubernetes Ingress work without it?
+How do you configure host-based routing in Ingress?
+What is path-based routing in Ingress?
+What are Network Policies in Kubernetes?
+How do Network Policies control pod-to-pod communication?
+Difference between Network Policies and Firewall rules?
+What is the role of gateways in Kubernetes networking?
+How do you restrict a pod to access only specific external APIs?
+What metrics can be monitored in Kubernetes?
+How do you monitor CPU and memory usage of pods?
+What is Prometheus, and how is it used in Kubernetes?
+What is Grafana, and how does it integrate with Prometheus?
+How do you configure alerts in Grafana?
+What is Grafana Loki, and how is it used for logging?
+What is a Sidecar container?
+What are common use cases of Sidecar containers?
+What is an Init Container?
+Difference between the Init container and the main container?
+What is Eviction Policy in Kubernetes?
+Why do pods get evicted?
+How do you check the logs of a crashed pod?
+What is the use of kubectl logs --previous?
+How do you troubleshoot a pod crash (CrashLoopBackOff)?
+What is Docker, and why is it used?
+What is a Docker image?
+What is a Dockerfile?
+How do you troubleshoot a Docker build failure?
+What are common Docker issues (auth, daemon, resources)?
+What is Terraform?
+What are Terraform modules?
+How does Terraform help in reusability?
+Give an example of reusable Terraform modules (EC2, S3).
+What is RBAC in Kubernetes?
+What is a Service Account?
+How do you control access in Kubernetes?
+What is log masking/log filtering?
+What are the steps to prepare an application before deployment?
+How do you handle dependencies before container startup?
+What is a Rolling Update in Kubernetes?
+How do you perform updates using Helm charts?
+
+===
+
+L1 interview Questions for useful #Devops #docker #devopscomunity
+Explain your project. 
+What is Docker? Why do we use it? And explain the architecture?
+After Docker, why do we choose Kubernetes, and what are the advantages
+Dockerfile for Python.
+What is the difference between CMD AND ENTRY POINT?
+How do you configure security for pods 
+What is IRSA and RBAC 
+Service is slow. What would be the possible reason? Can you explain
+Podcrashloopbackoff, and can you explain backoff?
+Liveness and readiness.
+What is Terraform, and have you implemented anything 
+What is Terraform state, and why do we use a remote backend?
+What are modules, and why do we use them?
+What is a data source, and what are the functions in Terraform?
+Explain the CI/CD pipeline and write the syntax for that pipeline.
+Did you work on on-prem, and were you involved in any migration activities?
+How many clusters and what environments did you manage?
+Write a bash script for taking backups.
+What is a load balancer, and in AWS, what types of load balancers have you worked on?
+What is S3, and have you set up anything related to S3 from scratch?
+What is pipelines failed generally what all issues did you face?
+How is the webhook configured?
+What issues did you face in setting up the infrastructure?
+Could you explain how you created the infrastructure from scratch and why the application needs to be available 24/7? What would your approach be?
+1. How do you design a zero-downtime Kubernetes cluster upgrade in production?
+2. A service is healthy but intermittently returns 503 errors - how would you debug this?
+3. How would you design a multi-region deployment architecture with failover?
+4. How do you handle stateful applications (like DBs) in Kubernetes?
+5. How would you design a secure and scalable secrets management system across teams?
+6. Your CI/CD pipeline takes 20 minutes for every commit - how would you optimize it to under 5 minutes?
+7. How do you implement GitOps at scale for multiple teams and environments?
+8. How would you design role-based access control (RBAC) across Kubernetes and cloud services? 
+9. A Terraform apply failed midway in production - how do you recover without breaking infra?
+10. How do you split and manage large Terraform state files across teams?
+11. How do you implement runtime security for containers beyond image scanning?
+12. How would you detect and prevent privilege escalation in Kubernetes clusters?
+13. How do you design SLO-based alerting to avoid alert fatigue?
+14. How do you correlate logs, metrics, and traces during a production incident?
+15. How would you design a self-healing system for critical services?
+16. How do you handle cascading failures in microservices architecture?
+17. How would you design a high-throughput CI system handling hundreds of builds per hour?
+18. How do you ensure data consistency and reliability in distributed systems?
+19. Your infrastructure cost increased by 50% in a week - how do you investigate and fix it?
+20. A system is working fine but latency suddenly spikes under specific conditions - how do you approach debugging?
+
+
+
 
