@@ -374,3 +374,25 @@ How it works
 		○ Storage (where supported)
 		○ OpenShift cluster itself
 
+. What is pod ? 
+. List the k8 components? 
+· What is your current platform architecture? 
+· What is your storage system? 
+. What are the spec in deployment resource? 
+· What is deploymentconfig? 
+· What deployment strategy are you using? 
+. What is ci/cd? 
+. Explain an issue faced in your Openshift environment? 
+. How will you troubleshoot resources issue? 
+. Have you build a container image . What are the parameters in Dockerfile. 
+. What version of Openshift you have worked on? 
+. Explain the installation process of Openshift? 
+. Explain OpenShift upgrade process in detail? 
+. What are the components you have come across in Openshift 
+architecture? 
+. What is the use of Openshift Virtualisation 
+· What is different between Route and Ingress . Can we use those together ? 
+. How to deny traffic between namespaces 
+. How will you optimise the resource usage across namespace 
+· What identity provider was used in your environment 
+. Have you deployed application on OpenShift using Jenkins - Integration ? 
