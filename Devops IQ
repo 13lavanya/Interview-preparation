@@ -1,0 +1,170 @@
+1️⃣ Can you explain the CI/CD pipeline flow in your project from code commit to production?
+2️⃣ What tools have you used for CI/CD automation?
+3️⃣ What happens when a developer pushes code to Git? Explain the pipeline trigger.
+4️⃣ What is the difference between Continuous Integration, Continuous Delivery, and Continuous Deployment?
+5️⃣ How do you build and package applications in your pipeline?
+6️⃣ How do you perform code quality checks and security scanning in CI/CD?
+7️⃣ How do you create and store artifacts (Docker images / build packages)?
+8️⃣ How does the pipeline deploy applications to Dev, QA, Staging, and Production environments?
+9️⃣ How do you ensure zero downtime deployments during releases?
+🔟 What is the difference between Blue-Green deployment and Rolling deployment?
+1️⃣1️⃣ What will you do if a CI/CD pipeline fails during deployment?
+1️⃣2️⃣ A new release is deployed but users start reporting errors. How do you troubleshoot?
+1️⃣3️⃣ How do you rollback a deployment if something goes wrong in production?
+1️⃣4️⃣ How do you secure secrets and credentials in CI/CD pipelines?
+1️⃣5️⃣ How do you optimize slow pipelines and reduce build time?
+
+⚙️ DevOps & CI/CD
+ • What are your day-to-day activities as a DevOps Engineer?
+ • How do you ensure stability and efficiency in CI/CD and cloud environments?
+ • Explain your CI/CD pipeline flow.
+ • What happens during Continuous Delivery (CD)?
+ • How do you manage pipeline configurations and rollback strategies?
+
+
+💡 Q1: How will you set up CI/CD?
+📝 Answer:
+Use Azure DevOps, GitHub Actions, or Jenkins
+Define pipelines for build, test, and deploy stages
+Integrate with version control (e.g., Git)
+Use Quality Gates (e.g., SonarQube)
+Automate deployments to environments like Dev, QA, and Prod
+
+💡 Q2: How will you handle monitoring and alerting?
+📝 Answer:
+Use Azure Monitor, Prometheus, or Grafana
+Set up metrics and logs collection
+Configure alerts for CPU, memory, disk, and app errors
+Use Log Analytics for deep insights
+Integrate alerts with email, Slack, or Teams
+
+💡 Q3: What about scaling, security, and disaster recovery?
+📝 Answer:
+Scaling: Use VM Scale Sets, Kubernetes HPA, or App Service autoscaling
+Security: Apply RBAC, use Azure Key Vault, enable network security groups (NSGs)
+Disaster Recovery: Set up backup policies, use geo-redundant storage, and configure failover strategies
+
+Top Git Interview Questions for DevOps Engineers :
+
+1. What is the difference between git fetch and git pull?
+👉 git fetch downloads the latest changes from the remote repository but does not merge them into your current branch.
+👉 git pull downloads and automatically merges the changes into your current branch.
+
+2. What is the difference between git merge and git rebase?
+👉 git merge combines branches and creates a merge commit, preserving branch history.
+👉 git rebase moves your commits on top of another branch, creating a cleaner and more linear history.
+
+3. What is a Git Branch?
+👉 A branch is an independent line of development that allows developers to work on features or bug fixes without affecting the main codebase.
+
+4. What is a Pull Request (PR)?
+👉 A Pull Request is a request to merge code changes from one branch into another. It allows code reviews and approval before merging.
+
+5. What is a Merge Conflict?
+👉 A merge conflict occurs when Git cannot automatically determine which changes to keep while merging branches. The conflict must be resolved manually.
+
+6. What is Git Stash?
+👉 Git Stash temporarily saves uncommitted changes so you can switch branches or perform other tasks without committing incomplete work.
+
+7. Explain the Git Workflow.
+👉 Working Directory → Staging Area → Local Repository → Remote Repository
+This is the basic workflow followed when developing and pushing code changes.
+
+8. What is the difference between git clone and git pull?
+👉 git clone creates a complete local copy of a remote repository.
+👉 git pull updates an existing local repository with the latest changes from the remote repository.
+
+9. How do you undo the last commit?
+👉 git reset --soft HEAD~1 removes the commit but keeps the changes.
+👉 git reset --hard HEAD~1 removes both the commit and the changes.
+👉 git revert <commit-id> creates a new commit that reverses the previous changes.
+
+10. How does Jenkins trigger a build when code is pushed to Git?
+👉 Git repositories can send a webhook notification to Jenkins whenever code is pushed. Jenkins receives the event and automatically triggers the CI/CD pipeline.
+
+
+=====
+
+Git Scenario-Based Interview Questions & Answers (Part 3)
+15. ArgoCD shows OutOfSync after someone used kubectl edit.
+✅ Answer:
+Git contains desired state.
+Manual change modified actual cluster state.
+ArgoCD detects drift.
+Fix:
+argocd app sync
+or revert manual changes.
+
+16. When would you use Cherry-Pick instead of Merge?
+✅ Answer:
+Use Cherry-Pick when only one specific commit is required.
+git cherry-pick <commit-id>
+Example:
+ A production hotfix exists in another branch and only that fix is needed.
+
+17. Which branching strategy would you use for 50 microservices?
+✅ Answer:
+Prefer Trunk-Based Development.
+Benefits:
+Faster releases
+Fewer merge conflicts
+Better CI/CD integration
+GitFlow may become difficult to manage at scale.
+
+18. Monorepo vs Multiple Repositories?
+✅ Answer:
+Monorepo
+ ✔ Easier dependency management
+ ✔ Unified CI/CD
+❌ Large repository size
+ ❌ Longer build times
+Multiple Repositories
+ ✔ Better isolation
+ ✔ Independent releases
+❌ Harder cross-service changes
+
+19. Local repository reports: "fatal: object is corrupted"
+✅ Answer:
+Verify repository:
+git fsck
+Recover:
+Re-clone repository
+Restore missing objects
+Recover from backup
+
+20. How would you implement Git governance for 500 developers?
+✅ Answer:
+Enforce:
+✔ Branch protection rules
+ ✔ Mandatory Pull Requests
+ ✔ Code owner approvals
+ ✔ Secret scanning
+ ✔ Signed commits
+ ✔ Automated security checks
+ ✔ CI/CD validations before merge
+ ✔ Least-privilege repository access
+ ✔ Audit logging
+ ✔ Repository templates and standards
+
+🔥 Most Frequently Asked Scenario Questions
+Git Reset vs Git Revert
+Merge vs Rebase
+Recover deleted branch
+Recover overwritten commits
+Force Push recovery
+Secret removal from Git history
+Cherry-Pick use cases
+GitHub Actions troubleshooting
+Monorepo vs Polyrepo
+GitOps drift handling
+Resolving complex merge conflicts
+Branching strategy selection
+Repository size optimization
+Interactive Rebase
+Trunk-Based Development vs GitFlow
+
+
+https://argo-cd.readthedocs.io/en/stable/getting_started/
+https://github.com/open-gitops
+
+
