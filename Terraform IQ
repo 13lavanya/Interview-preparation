@@ -502,3 +502,38 @@ Core Strategies for Secret Management
 🔹 Contrast count, for_each, and dynamic blocks — when does each one win?
 🔹 Mention how you manage sensitive variables without exposing them in state.
 🔹 Justify when you'd use the lifecycle prevent_destroy meta-argument.
+
+====
+
+Terraform and Ansible 
+
+1️⃣ Your Terraform apply failed after creating some resources. How do you handle state consistency and avoid drift?
+-> If a Terraform apply fails after creating some resources, I first inspect the state and compare it with actual infrastructure. I run terraform plan to identify drift, import resources that exist but aren’t in state, or remove broken ones from state if needed. I fix the root cause before re‑applying, use remote state with locking to prevent corruption, and rely on regular plan runs or CI drift detection to avoid future inconsistencies.
+
+2️⃣ How do you design a Terraform architecture for multi-environment (Dev/QA/Prod) with proper isolation?
+3️⃣ You accidentally exposed a Terraform state file with secrets. What immediate actions will you take?
+If a Terraform state file containing secrets is exposed, I would immediately treat it as a security incident. First, I'd remove public access to the file and determine what secrets were exposed. Next, I would rotate all affected credentials, review audit logs for possible misuse, and notify the security team according to incident response procedures. After containment, I'd ensure the state is stored securely in an encrypted remote backend with restricted access and implement preventive controls such as secret management, .gitignore rules, and repository secret scanning to avoid recurrence.
+4️⃣ How do you manage Terraform state locking in a team environment?
+-> In a team environment, I manage Terraform state locking by using a remote backend that supports locking—typically S3 with DynamoDB or GCS/Azure block storage. I separate state per environment and component, restrict who can run applies, and centralize applies through CI/CD to avoid concurrent changes. I treat force-unlock as a last resort and never disable locking in production. This ensures state consistency and safe collaboration.
+
+5️⃣ How do you handle Terraform drift detection in production infrastructure?
+6️⃣ Your infrastructure needs frequent updates without downtime. How do you design Terraform modules for this?
+7️⃣ How do you implement CI/CD pipeline for Terraform with approval gates?
+8️⃣ A Terraform deployment is taking too long. How do you optimize performance?
+9️⃣ How do you securely manage secrets and sensitive variables in Terraform?
+🔟 You need to provision infrastructure across multiple AWS accounts/regions. How will you design it?
+====
+
+1️⃣1️⃣ Ansible playbook works on some servers but fails on others — how do you debug and fix it?
+1️⃣2️⃣ How do you design idempotent Ansible playbooks for large-scale environments?
+1️⃣3️⃣ Your Ansible run caused configuration drift in production. How do you recover?
+1️⃣4️⃣ How do you integrate Ansible with dynamic inventory (e.g., AWS EC2)?
+1️⃣5️⃣ You need to deploy changes to 1000+ servers with minimal downtime. How will you design the Ansible strategy?
+
+
+→ Is Ansible inventory static or dynamic?
+→ Difference between shell module and command module?
+→ Write a playbook to copy a file and start a service.
+→ What is a module in Ansible?
+
+
