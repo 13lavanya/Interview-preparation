@@ -1,0 +1,44 @@
+→ Scenario based questions on the find command.
+→ How do you check listening ports?
+→ How do you check running processes?
+
+
+🐧 Linux & System Troubleshooting
+ • Difference between Hard link vs Soft link.
+ • A user can’t access a file — how do you grant permissions?
+ • A process is consuming high CPU or memory — how do you monitor and handle it?
+ • A user can’t SSH into a server — how do you troubleshoot?
+
+🔧 DevOps Interview Prep – Linux Troubleshooting & Performance
+
+💡 Q1: A critical service on a Linux VM is failing silently. How do you diagnose the issue?
+📝 Answer:
+Check systemctl status and journalctl logs
+Inspect resource usage with top, htop, and iotop
+Validate config files and permissions using strace or lsof
+
+💡 Q2: Your application is experiencing high CPU usage. What’s your step-by-step approach to isolate the cause?
+📝 Answer:
+Use top or pidstat to identify the process
+Analyze threads with ps -L and perf
+Check for infinite loops, memory leaks, or misconfigured cron jobs
+
+💡 Q3: A user reports slow SSH login to a Linux server. What could be the root causes?
+📝 Answer:
+DNS resolution delays (UseDNS in sshd_config)
+Authentication method issues (e.g., GSSAPI)
+Host key verification or PAM module delays
+
+Command	Purpose	Best Used For
+grep	Search text for patterns	Finding lines containing specific text
+awk	Text processing and reporting	Working with columns, calculations, formatted output
+find	Search files and directories	Locating files based on name, size, type, date, etc.
+sed	Stream editor	Searching and replacing text, line editing
+
+🐧 Linux & System Troubleshooting
+ • Difference between Hard link vs Soft link.
+ • A user can’t access a file — how do you grant permissions?
+ • A process is consuming high CPU or memory — how do you monitor and handle it?
+ • A user can’t SSH into a server — how do you troubleshoot?
+
+
