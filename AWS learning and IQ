@@ -1,0 +1,217 @@
+https://renovacloud.com/en/list-of-all-aws-services-with-description/
+
+
+
+
+Key Differences at a Glance
+Feature	AWS Fargate	Amazon EC2
+Infrastructure Management	Serverless (AWS manages all patching, scaling, and provisioning).	Full Control (You manage OS patches, instance scaling, and security hardening).
+
+Feature	Security Group	Network ACL (NACL)
+Level	Instance level (ENI / EC2)	Subnet level
+State	Stateful (tracks connection state)	Stateless (no memory of connections)
+Rules	Only Allow rules	Both Allow & Deny rules
+Rule Evaluation	All rules evaluated together	Rules evaluated in number order (lowest first)
+Return Traffic	Automatically allowed	Must be explicitly allowed
+Default Behavior	Deny all inbound, allow all outbound	Allow all inbound & outbound (default NACL)
+Association	Can be attached to multiple instances	Attached to subnets
+Rule Types	Simpler	More granular (CIDR + rule numbers)
+
+EFS EBS 
+
+In s3 how do you take backup and if primary bucket is not reachable then how dp you get data back up
+If one of the ec2 instances is not recieving traffic then what is the issue
+Cost optimization strategies in AWS
+5 principles of AWS
+How to Attach volumes to mutiple EC2 instances
+How to implement blue green in AWS 
+Storing secrets for mutiple accounts
+EKS -> how do you manage application in AWS
+Active- active active-passive 
+muti az -> who does switch from one AZ - AZ 
+What is AZ, DC 
+When designing a VPC architecture, should a Load balancer be placed in a public subnet or private subnet ?
+How do you  implement cross-account access in AWS using IAM roles ?
+
+
+
+23. Scenario: The application is up and running but not accessible from the public internet. How do you troubleshoot?
+24. Scenario: You deployed an EC2 instance with all necessary dependencies but are not able to access it. How do you troubleshoot?
+
+• Difference between Security Groups & NACLs?
+• What happens if one AZ goes down?
+• Explain ALB flow in simple terms
+• Real use case of IAM roles?
+• EC2 Auto Scaling vs Kubernetes autoscaling?
+
+🔹 IAM Role vs IAM User — which one do you assign to EKS workloads and why?
+🔹 Show how aws-auth ConfigMap controls access to your EKS cluster.
+🔹 A pod can't reach an external API — trace your debugging steps end to end.
+🔹 Evaluate EKS managed node group vs self-managed vs Fargate in production.
+🔹 Summarize how IRSA works and why it's safer than node-level IAM roles.
+🔹 Give a real scenario where you'd need a VPC endpoint over public routing.
+🔹 Spot this — an S3 bucket is publicly exposed. How did it happen and how do you fix it at scale?
+🔹 Detail how you handle cross-account deployments in AWS.
+🔹 Which do you troubleshoot first — Security Group or NACL? Justify your answer.
+
+☁️ AWS & Networking
+1) Design a 3-tier AWS architecture with a focus on networking
+2) Difference between SNS vs SQS? give the real-world examples?
+3) How to identify private vs public subnets?
+4) Suppose you have two EC2 instances in the same VPC, both deployed in different public subnets. How would you configure them to communicate with each other
+5) What if they are in different private subnets?
+6) What is S3 Cross-Region Replication? Why we use?
+7) Suppose your EC2 instance has attached EBS volume of 100 GB but instance not being used full space, just using 40%. what to done to reduce volume?
+
+====
+
+AWS / Networking / Infrastructure :
+1. Can you explain the types of S3 buckets / storage classes?
+2. How can you configure Cross-Region Replication (CRR) in S3?
+3. We have 16 EC2 instances and need weekly snapshot backups with 15 days retention. How would you configure this?
+4. How would you design a VPC architecture for the following teams:
+HR team → internet required
+Database team → no internet access
+Admin team → limited internet access
+Creative team → full internet access
+5. Types of scaling in AWS? Which scaling approach would you choose and when?
+6. How would you configure communication between:
+Application server ↔ Application
+Database server ↔ Database
+Across environments/regions
+
+
+====
+
+AWS & Cloud
+🔹 Difference between Security Groups and NACLs
+🔹 How do you secure S3 buckets in production?
+🔹 ALB vs NLB — when would you use each?
+🔹 Designing highly available architecture in AWS
+🔹 IAM Roles and Cross-Account Access
+🔹 VPC Peering vs Transit Gateway
+🔹 EKS vs ECS vs EC2 deployments
+🔹 AWS cost optimization strategies in production
+
+What is AWS PrivateLink, and how does it differ from VPC Peering and Transit Gateway?
+ How do you design Disaster Recovery (DR) for a multi-region AWS architecture?
+
+
+
+https://624052200306.signin.aws.amazon.com/console
+
+test-user 
+testuser@!23
+
+
+ssh -i test-devops.pem ubuntu@15.206.91.90
+
+lavanyak@Mac Downloads % ssh -i test-devops.pem ubuntu@15.206.91.90
+The authenticity of host '15.206.91.90 (15.206.91.90)' can't be established.
+ED25519 key fingerprint is: SHA256:LKZDNaBQhuU33rdnqSbOtjzyOo4KibnNR58oAYdKxe4
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '15.206.91.90' (ED25519) to the list of known hosts.
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0644 for 'test-devops.pem' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "test-devops.pem": bad permissions
+
+
+chmod 600 test-devops.pem
+
+# sudo apt update
+#  apt install openjdk-11-jdk
+# java --version
+
+# python3 -m http.server
+
+
+
+
+
+
+
+
+
+¡abhishekveeramalla@aveerama-mac Downloads
+% 
+scp -i /Users/abhishekveeramalla/Downloads/aws_login.pem /Users/abhishekve
+eramalla/Downloads/aws_login.pem ubuntu@54.90.76.58:/home/ubuntu
+
+# vim index.html
+
+https://github.com/iam-veeramalla/aws-devops-zero-to-hero/blob/main/day-8/Interview_q%26a. - interview questions
+
+
+Cross-account S3 access (Account A → Account B)
+
+	·  Difference between Public and Private Subnet?
+	·  How does Internet Gateway work?
+	· What is NAT Gateway?
+	· How do you connect to a private EC2 instance?
+	· What to check if S3 Put/Get is failing?
+	· How does IAM policy evaluation work?
+	· How do you ensure zero downtime in RDS upgrade?
+	· What is Blue-Green deployment in RDS?
+	· What happens during Multi-AZ failover?
+	· What monitoring tools are available in AWS?
+	· Instance is unhealthy – how to handle?
+	· S3 bucket suddenly inaccessible – troubleshooting steps?
+	·  Multiple alerts triggered – how to prioritize?
+	· How would you optimize a slow CI/CD pipeline in a large-scale project?
+	· What are the differences between EC2, ECS, EKS, and Lambda? In which scenario would you choose one over the other?
+	· How do you set up high availability and fault tolerance in AWS for a web application?
+	·  Explain the difference between scaling vertically and horizontally in AWS.
+	· How would you implement a disaster recovery plan in AWS?
+	· Can you walk through setting up an Auto Scaling Group (ASG) with load balancers?
+	· How do IAM roles and policies differ from security groups in AWS?
+	· What is the difference between S3 Standard, S3 Intelligent-Tiering, and S3 Glacier?
+	· How would you secure sensitive data stored in AWS S3?
+	· What are VPC Peering and Transit Gateway? When would you use them?
+	·  Explain how you would set up monitoring and alerting using CloudWatch for a production application.
+	 How do you secure an application running in AWS?
+ How do you size an EKS cluster for a project?
+           How to host applications in AWS S3
+           What is the alternative to AWS CloudFront
+           What are cross-account roles in AWS and how to configure them
+           What is the difference between Internet Gateway and NAT Gateway?
+           How do you decide between VPC Peering and Transit Gateway?
+           Why is Transit Gateway more costly than VPC Peering?
+           How do you use API Gateway and when would you choose public vs private APIs?
+           Explain the difference between S3, DynamoDB, and RDS.
+           What are the key benefits of cloud migration?
+           How do you ensure security in AWS?
+           How do you size an EKS cluster for a project?
+           How do you diagnose findings in AWS Inspector?
+           What are Beats in the ELK stack and their use cases?
+
+
+ What happens if a microservice pod fails due to port already in use?
+-> 
+This can happen if:
+	• Another process inside the container is already listening on that port.
+	• The application starts multiple instances unintentionally.
+	• A sidecar or agent is configured to use the same port.
+	What Kubernetes does:
+		1. Container startup fails.
+		2. Container exits with a non-zero exit code.
+		3. Kubernetes restarts the container according to the pod's restart policy.
+		4. The pod status becomes: 
+			§ CrashLoopBackOff (after repeated failures)
+			§ or Error
+	
+	A port conflict typically results in:
+		• Container startup failure.
+		• Pod entering CrashLoopBackOff.
+		• Deployment showing reduced available replicas.
+		• OpenShift/Kubernetes continuously attempting to recreate the container until the configuration is fixed.
+	
+	
+ How do you enable autoscaling in Kubernetes?
+
+
+
