@@ -1,0 +1,165 @@
+1. What is OpenShift Service Mesh, and why is it used?
+OpenShift Service Mesh (OSSM) is Red Hat’s supported implementation of Istio that provides traffic management, security (mTLS), observability, and policy enforcement for microservices running on OpenShift—without application code changes.
+2. How is OpenShift Service Mesh related to Istio?
+OSSM is a productized, supported, hardened distribution of Istio, integrated with OpenShift security, networking, and operators.
+3. What problems does a service mesh solve that Kubernetes alone does not?
+	• Secure service‑to‑service communication (mTLS)
+	• Fine‑grained traffic control
+	• Observability across services
+	• Resilience features like retries and circuit breaking
+4. Main components of OpenShift Service Mesh?
+	• Istiod (control plane)
+	• Envoy sidecar proxies (data plane)
+	• Ingress/Egress Gateways
+	• Observability tools (Kiali, Jaeger, Prometheus)
+5. What is a sidecar proxy?
+An Envoy container injected into each pod to intercept and manage traffic transparently.
+6. What is Envoy?
+	A high‑performance proxy that handles routing, mTLS, retries, load balancing, metrics, and tracing.
+7. North‑south vs east‑west traffic?
+	• North‑south: external ↔ cluster
+	• East‑west: service ↔ service inside cluster
+8. What is mTLS?
+     Mutual TLS ensures both client and server authenticate each other, encrypting all     service traffic.
+9. How does Service Mesh improve observability?
+Envoy automatically emits metrics, traces, and logs for every request.
+10. Can Service Mesh work with non‑containerized services?
+	Yes, via mesh expansion using gateways.
+	
+2. Architecture & Components
+1. Role of Istiod
+Manages configuration, certificates, identity, and pushes policies to Envoy proxies.
+2. Control plane vs data plane
+	• Control plane: Istiod
+	• Data plane: Envoy sidecars
+3. What happens during sidecar injection?
+A mutating webhook injects Envoy and configures iptables to route traffic through it.
+4. Ingress vs Egress Gateways
+	• Ingress: traffic into mesh
+	• Egress: traffic out of mesh
+5. OpenShift networking integration
+	Runs on OVN‑Kubernetes or OpenShift SDN; mesh operates at L7 without replacing CNI.
+6. Common CRDs introduced
+VirtualService, DestinationRule, Gateway, PeerAuthentication, AuthorizationPolicy
+	
+3. Traffic Management
+1. VirtualService
+	Defines how requests are routed (weights, headers, paths).
+2. DestinationRule
+	Defines policies for traffic after routing (subsets, TLS, circuit breakers).
+3. Canary deployment
+	Split traffic by percentage using VirtualService.
+4. Blue‑green deployment
+	Route traffic to either “blue” or “green” service versions.
+5. Circuit breaking
+	Prevents cascading failures by limiting concurrent connections or retries.
+6. Retries & timeouts
+Configured in VirtualService to improve resiliency.
+7. Fault injection
+Simulates failures (latency, aborts) to test resilience.
+8. Namespace traffic control
+Controlled using AuthorizationPolicy and ServiceMeshMemberRoll.
+	
+4. Security
+1. Zero‑trust networking
+	Every service must authenticate—no implicit trust.
+2. PeerAuthentication
+	Controls mTLS mode at mesh, namespace, or workload level.
+3. AuthorizationPolicy
+Defines who can talk to whom based on identity, method, path.
+4. mTLS modes
+	• STRICT: only mTLS
+	• PERMISSIVE: mTLS + plaintext
+	• DISABLE: no mTLS
+5. Certificate management
+	Istiod issues and rotates short‑lived certs automatically.
+6. Restrict service communication
+Use AuthorizationPolicy with SPIFFE identities.
+7. JWT authentication
+Use RequestAuthentication for validating JWTs.
+8. External identity providers
+Yes, via JWT, OAuth, and API gateways.
+	
+5. Observability
+1. Tools included
+	• Kiali: topology & health
+	• Jaeger: distributed tracing
+	• Prometheus: metrics
+	2. Kiali provides
+	Traffic graphs, config validation, health indicators.
+	3. Distributed tracing
+	Trace IDs propagated through Envoy proxies.
+	4. Default metrics
+	Latency, request count, error rate (Golden Signals).
+	5. Troubleshooting latency
+	Check Kiali graphs, Prometheus metrics, Jaeger traces.
+		
+6. Installation & Configuration (OpenShift)
+1. How is OSSM installed?
+Using Operators:
+	• Elasticsearch
+	• Jaeger
+	• OpenShift Service Mesh
+	2. ServiceMeshControlPlane
+	Defines mesh configuration (version, gateways, tracing).
+	3. ServiceMeshMemberRoll
+	Specifies which namespaces join the mesh.
+	4. Adding a namespace
+	Add it to ServiceMeshMemberRoll.
+	5. Automatic sidecar injection
+	Enabled via namespace label.
+	6. Disable injection
+	Use pod annotation sidecar.istio.io/inject: "false"
+			
+7. Performance & Operations
+	1. Performance overhead
+	Typically 5–10% latency increase.
+	2. Scaling control plane
+	Scale Istiod replicas horizontally.
+	3. Production best practices
+		○ Limit mesh scope
+		○ Use STRICT mTLS
+		○ Enable resource limits
+		4. Pod startup delay
+		Slightly increased due to sidecar and cert exchange.
+		5. Upgrade strategy
+		Operator‑managed rolling upgrades.
+		6. Istiod failure impact
+		Existing traffic continues; config updates stop.
+				
+8. Troubleshooting
+	1. Traffic not reaching service – common causes
+		○ mTLS mismatch
+		○ Missing AuthorizationPolicy
+		○ Incorrect VirtualService
+		2. Check if pod is in mesh
+		oc get pod -o yaml | grep istio-proxy
+		3. Verify mTLS
+		Use Kiali or istioctl proxy-config
+		4. Debug Envoy
+		Check istio-proxy logs and config dump.
+		
+9. Scenario‑Based
+	1. Canary release
+		Use VirtualService with weighted routing.
+	2. Secure two namespaces
+		STRICT mTLS + AuthorizationPolicy.
+	3. Gradual mesh migration
+		Start with PERMISSIVE mTLS.
+	4. Expose service externally
+		Use Ingress Gateway + Gateway CR.
+	5. Incident traffic restriction
+		Apply AuthorizationPolicy or route to fallback.
+					
+10. Advanced / Design
+	1. When not to use mesh?
+		○ Simple monoliths
+		○ Very latency‑sensitive systems
+		○ Small teams without operational maturity
+		2. Service Mesh vs API Gateway
+			§ Mesh: east‑west traffic
+			§ API Gateway: north‑south traffic
+			3. OSSM vs upstream Istio
+			OSSM is certified, supported, and operator‑managed.
+			4. Multi‑cluster mesh
+			Use federation with shared trust roots.
