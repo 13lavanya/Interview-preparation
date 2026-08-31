@@ -1,0 +1,665 @@
+Production issues
+
+1. How do you troubleshoot a deployment that succeeds but the application is still inaccessible?
+2. A Jenkins pipeline suddenly fails after months of working. What would you check first?
+3. How would you identify the root cause of high CPU usage on a Linux server?
+4. A Kubernetes Pod is restarting continuously. How would you troubleshoot it?
+5. How do you investigate a sudden increase in application latency?
+6. What steps would you take if a production server runs out of disk space?
+7. How do you safely roll back a failed production deployment?
+8. An application works in Dev but fails in Prod. How would you compare the environments?
+9. How would you troubleshoot database connection issues from an application?
+10. A Docker container exits immediately after startup. What would you check?
+11. How do you identify which deployment introduced a production issue?
+12. What would you do if SSL certificates expire unexpectedly?
+13. How do you troubleshoot a failed Kubernetes deployment rollout?
+14. What metrics do you check first during a production incident?
+15. How would you investigate 502 or 503 errors?
+16. A website is down. Explain your troubleshooting approach from start to finish.
+17. How do you handle a failed Terraform deployment in production?
+18. What would you do if Prometheus alerts suddenly stopped firing?
+19. How do you troubleshoot a Kubernetes service that is not routing traffic?
+20. How would you investigate memory leaks in an application?
+21. What information do you include in an RCA (Root Cause Analysis)?
+22. How do you ensure zero-downtime deployments?
+23. What would you do if a secret was accidentally pushed to Git?
+24. How do you troubleshoot DNS-related production issues?
+25. A node becomes NotReady in Kubernetes. What are your next steps?
+26. How do you identify the cause of increasing cloud costs?
+27. What checks do you perform before deploying to production?
+28. How do you prioritize multiple production alerts occurring at the same time?
+29. Describe a major production issue you solved and your troubleshooting process.
+30. What is your approach to preventing recurring production incidents?
+
+1️⃣ Yrrors.our Kubernetes rollout is stuck at 50% availability.
+Old pods are running, new pods aren’t coming up.
+No obvious e
+Where do you start and WHY?
+
+2️⃣ CPU usage is low, memory is stable —
+but the application is randomly getting OOMKilled.
+What’s the hidden issue here?
+
+3️⃣ You enabled HPA, traffic increased,
+but response time got worse instead of better.
+What did autoscaling NOT solve?
+
+4️⃣ A deployment rollback succeeded,
+but users still see broken behavior.
+What could persist even after rollback?
+
+5️⃣ Same Docker image works in staging,
+fails only in production.
+Configs are “same”.
+What differences are you suspecting first?
+
+6️⃣ CloudWatch shows normal metrics,
+but DB connections are getting exhausted.
+What metric are you NOT looking at?
+
+7️⃣ Your Spark job fails only when data volume crosses a limit,
+not at smaller scale.
+What design flaw does this hint at?
+
+8️⃣ CI pipeline fails only on Monday mornings.
+Same code, same infra.
+What external dependency do you check?
+
+9️⃣ Application is healthy, infra is healthy,
+yet only one region’s users are impacted.
+What layer is the problem in?
+
+🔟 An alert fires saying “Service Down”,
+but you have zero context.
+What’s the FIRST signal you correlate — and why?
+
+==============
+
+1️⃣ Your Kubernetes pod restarts randomly once a day.
+No errors in application logs.
+How will you debug?
+2️⃣ We reduced EC2 count by 40%, but AWS bill increased.
+Explain.
+3️⃣ Airflow DAG shows success, but downstream data is missing.
+What could be wrong?
+4️⃣ Terraform apply succeeds.
+Infra works.
+But next plan wants to recreate resources.
+Why?
+5️⃣ Production latency increased after a “no-code-change” deployment.
+What changed?
+6️⃣ Your Spark job uses same executor config,
+but runtime varies daily.
+Reason?
+7️⃣ CI pipeline time is 12 minutes.
+Developers want it under 5.
+What do you optimize FIRST?
+8️⃣ Autoscaling is enabled.
+Still pods are pending.
+Why?
+9️⃣ Logs, metrics, alerts — all green.
+Users report outage.
+What do you trust
+🔟 If something breaks at 2 AM,
+what tells you where to look first?
+
+
+=========
+
+
+
+4. ConfigMap Update Not Reflected
+Q: Applied ConfigMap changes, but pods show old values. Why?
+• A: ConfigMap won’t auto-refresh in running pods. Restart pods with `kubectl rollout restart`. For automation, use Stakater Reloader.
+
+5. Deployment Rollout Stuck
+Q: Deployment is stuck rolling out. What to do?
+• A: Check rollout status (`kubectl rollout status`). Look for probe/image errors in events, verify image tag. Use `kubectl rollout undo` to rollback.
+
+6. Node Resource Contention
+Q: Some nodes maxed out, others idle. Solution?
+• A: Tune requests/limits, use appropriate taints/tolerations, and improve pod affinity/anti-affinity rules.
+
+7. Storage Class & Zone Mismatch
+Q: PVC fails due to storage class zone mismatch—how to fix?
+• A: Check that the node and storage class zones match. Update storageClass or reschedule workload to correct zone. Dynamic provisioning should respect topology.
+
+
+========
+💡 Q1: Your team is overspending on pipeline agents. How do you optimize costs?
+📝 Answer:
+Use self-hosted agents for long-running jobs
+Schedule pipelines during off-peak hours
+Consolidate jobs and use caching
+
+💡 Q2: You need to enforce naming conventions and tagging across resources. What’s your strategy?
+📝 Answer:
+Use Azure Policy and Terraform Sentinel
+Automate tagging via pipeline tasks
+Validate naming via pre-deployment scripts
+
+💡 Q3: How do you track and report DevOps KPIs across teams?
+📝 Answer:
+Use Azure DevOps Analytics and Power BI
+Define KPIs like deployment frequency, MTTR
+Automate reporting with dashboards and alerts
+
+
+
+🔧 DevOps Interview Prep – GitOps & ArgoCD
+
+💡 Q1: You’re asked to implement GitOps for AKS using ArgoCD. What’s your approach?
+📝 Answer:
+Define desired state in Git using Helm/Kustomize
+Use ArgoCD for continuous sync and drift detection
+Secure ArgoCD with RBAC and SSO
+
+💡 Q2: How do you handle secrets in a GitOps workflow?
+📝 Answer:
+Use sealed secrets or external secret managers
+Integrate with Azure Key Vault via CSI driver
+Avoid storing raw secrets in Git
+
+💡 Q3: Your team wants rollback support in GitOps. How do you enable it?
+📝 Answer:
+Use Git history for versioned rollbacks
+Tag stable releases and use ArgoCD rollback features
+Monitor sync status and audit logs
+
+=====
+
+🚀 Top DevOps + AWS Interview Questions You Must Master!
+🎯 Role Focus: DevOps + AWS
+🔥 Inspired by Abhishek Veramalla’s deep-dive sessions
+
+1. How can automated infrastructure setup transform your DevOps workflows, and what tools (like Terraform or CloudFormation) have you used to make it seamless?
+
+2. What are the biggest challenges you've encountered with unreliable CI/CD pipelines, such as random failures, and how do you approach debugging them without oversimplifying the errors?
+
+3. In troubleshooting lambda function issues, how do you systematically collect and analyze logs from various sources to pinpoint root causes?
+
+4. Should optional components in a pipeline ever cause the whole process to fail? What's your strategy for managing them—fix, remove, or isolate?
+
+5. How does continuous deployment automate resource management across multiple environments (e.g., dev, staging, prod), and what's the ideal frequency for releasing application updates?
+
+6. When dealing with ECR (Elastic Container Registry) failures in DevOps projects, how do you navigate publication errors and ensure smooth image handling?
+
+7. What's your go-to method for explaining complex pipeline failures to your team, and how has gathering detailed data helped in past resolutions?
+
+**Bonus Questions to Dive Deeper (Inspired by the Abhishek veramalla):**
+
+8. In AWS environments, how do you balance speed and reliability in CI/CD—any best practices for integrating security scans without slowing down deployments?
+
+9. Have you implemented blue-green deployments or canary releases to minimize downtime? What pitfalls should beginners watch out for?
+
+10. How can monitoring tools like CloudWatch or Prometheus help predict and prevent CI/CD failures before they impact production?
+
+11. For interview prep: Describe a time when you optimized a flaky pipeline—what metrics did you track (e.g., deployment success rate, mean time to recovery)?
+
+12. What's the role of IaC (Infrastructure as Code) in making deployments predictable, and how do you handle rollbacks in case of issues?
+
+13. In a multi-team setup, how do you ensure CI/CD pipelines support collaboration without introducing bottlenecks?
+
+
+======
+
+ DevOps Interview Prep – CI/CD Resilience & Monitoring
+
+💡 Q1: Your pipeline fails intermittently due to flaky tests. How do you improve reliability?
+📝 Answer:
+Identify and isolate flaky tests using test analytics
+Use retry logic with test thresholds
+Containerize test environments for consistency
+
+💡 Q2: You need to monitor pipeline health across multiple projects. What’s your strategy?
+📝 Answer:
+Use Azure Monitor and Log Analytics
+Set up dashboards with pipeline metrics
+Configure alerts for failures and duration spikes
+
+💡 Q3: A critical release was delayed due to manual approvals. How do you streamline this?
+📝 Answer:
+Implement conditional approvals based on environment
+Use service principals and RBAC for automation
+Integrate approval workflows with Teams or Slack
+
+
+=====
+
+🔧 DevOps Interview Prep – Terraform & Compliance
+
+💡 Q1: You’re onboarding a project with strict compliance needs. What Terraform practices ensure auditability?
+📝 Answer:
+Use version-controlled modules
+Enable detailed logging and state file encryption
+Apply Sentinel/OPA policies for governance
+
+💡 Q2: You need to support multiple environments with shared modules. How do you structure your Terraform code?
+📝 Answer:
+Use environment-specific workspaces
+Parameterize modules with variables
+Separate backend config per environment
+
+💡 Q3: You’re asked to implement automated secret rotation. What’s your approach using Azure DevOps and Key Vault?
+📝 Answer:
+Use Azure Functions or Logic Apps for rotation
+Trigger rotation via pipeline or schedule
+Update secrets in Key Vault and refresh pipeline access
+
+
+=====
+
+🔧 DevOps Interview Prep – Advanced Azure DevOps Scenarios
+
+💡 Q1: You need to implement zero-downtime deployment for a critical AKS app. What’s your strategy?
+📝 Answer:
+Use rolling updates with readiness/liveness probes
+Configure deployment strategy in Helm or YAML
+Use traffic shifting with Istio or Azure Front Door
+
+💡 Q2: A production deployment failed due to a misconfigured YAML. How do you prevent this in future?
+📝 Answer:
+Use pipeline linting tools
+Implement pre-merge checks with templates
+Add automated YAML validation in CI
+
+💡 Q3: You’re asked to integrate GitHub with Azure DevOps pipelines. How do you manage permissions securely?
+📝 Answer:
+Use GitHub PATs or service connections
+Limit scope of access tokens
+Use branch protection and role-based access
+
+=====
+
+🔧 DevOps Interview Prep – Terraform & Governance
+
+💡 Q1: You need to validate Terraform changes before applying. How do you do this in Azure DevOps?
+📝 Answer:
+Use terraform plan in CI
+Add manual approval before apply
+Use terraform validate for syntax checks
+
+💡 Q2: You’re asked to enforce tagging across all resources. How do you implement this?
+📝 Answer:
+Use modules with default tags
+Add Sentinel/OPA policies
+Validate in CI pipeline
+
+💡 Q3: You need to rotate secrets stored in Azure Key Vault. What’s your approach?
+📝 Answer:
+Enable Key Vault rotation policies
+Use automation with Azure Functions
+Integrate with pipeline using Key Vault task
+
+====
+
+
+🔧 DevOps Interview Prep – Azure DevOps Pipelines
+
+💡 Q1: You need to deploy only backend changes from a monorepo. How do you configure the pipeline?
+📝 Answer:
+Use path filters in trigger section
+Separate pipeline stages for frontend/backend
+Conditional steps based on file changes
+
+💡 Q2: A pipeline is stuck in the approval stage. What’s your next step?
+📝 Answer:
+Check environment approvals
+Validate user permissions
+Review pipeline YAML for conditions
+
+💡 Q3: You want to reuse pipeline logic across projects. How do you do that?
+📝 Answer:
+Use pipeline templates
+Store shared templates in a central repo
+Reference using template keyword in YAML
+
+====
+
+
+1. How do you design zero-downtime deployments for stateful apps on Kubernetes?
+ → PDBs, readiness probes, preStop hooks, DB migration sequencing
+
+2. Terraform state is huge (200MB) and plan takes 12 mins. How do you fix it?
+ → State splitting, module boundaries, remote backend optimization
+
+3. Pods are Running but users see 503 errors. Where do you debug?
+ → Readiness vs liveness, endpoints, service selectors, upstream failures
+
+4. How do you manage secrets across 50+ services without exposing Vault access?
+ → Vault injector, K8s auth, dynamic secrets, external secrets operator
+
+5. How do you design GitOps for multiple teams with independent releases?
+ → ArgoCD App-of-Apps, ApplicationSets, controlled infra repos
+
+6. Image passed scans but got exploited. What did you miss?
+ → Runtime security, RBAC, seccomp, writable FS, exposed secrets
+
+7. How do you implement SLO-based alerting without alert fatigue?
+ → Error budget, burn rate alerts, multi-window strategy
+
+8. CI builds 40 Docker images and takes 18 mins. How do you optimize?
+ → BuildKit caching, parallel builds, selective rebuilds
+
+9. How do you upgrade a Kubernetes cluster with zero downtime?
+ → Cordon, drain, rolling node upgrade, compatibility checks
+
+10. Reduce cloud cost by 40% without impacting performance. Where do you start?
+ → Right-sizing, spot instances, autoscaling tuning, cost observability
+
+
+🔹 1. Production Outage Scenario
+A critical production application hosted on Kubernetes suddenly went down during peak business hours. How would you identify the root cause and restore services quickly?
+
+🔹 2. CI/CD Pipeline Failure Scenario
+Your deployment pipeline is failing intermittently after recent updates to the build process. How would you troubleshoot and stabilize the CI/CD pipeline?
+
+🔹 3. Infrastructure as Code Scenario
+Your Terraform deployment accidentally modified production resources causing downtime. How would you prevent such incidents in future deployments?
+
+🔹 4. Cloud Cost Optimization Scenario
+Management noticed cloud infrastructure costs increased significantly over the last few months. What steps would you take to optimize cloud spending without affecting performance?
+
+🔹 5. Kubernetes Scaling Scenario
+Your application experiences heavy traffic spikes during sales events, causing pod failures and latency issues. How would you improve scalability and reliability?
+
+🔹 6. Security Incident Scenario
+A security team identified exposed credentials in a Git repository. How would you handle the situation and secure the environment immediately?
+
+🔹 7. Monitoring & Alerting Scenario
+Users reported performance degradation, but no alerts were triggered from the monitoring system. How would you improve observability and proactive monitoring?
+
+🔹 8. Multi-Environment Deployment Scenario
+Different environments (Dev, QA, UAT, Production) are behaving inconsistently after deployments. How would you standardize deployments across environments?
+
+🔹 9. Disaster Recovery Scenario
+A cloud region became unavailable due to a major outage. How would you ensure business continuity and disaster recovery for critical applications?
+
+🔹 10. Legacy Application Migration Scenario
+Your organization plans to migrate a legacy on-premise application to the cloud. What migration strategy and DevOps practices would you follow?
+====
+
+“𝐘𝐨𝐮𝐫 𝐚𝐩𝐩𝐥𝐢𝐜𝐚𝐭𝐢𝐨𝐧 𝐢𝐬 𝐝𝐨𝐰𝐧. 𝐊𝐮𝐛𝐞𝐫𝐧𝐞𝐭𝐞𝐬 𝐬𝐡𝐨𝐰𝐬 𝐚𝐥𝐥 𝐩𝐨𝐝𝐬 𝐚𝐬 𝐑𝐮𝐧𝐧𝐢𝐧𝐠. 𝐍𝐨 𝐚𝐥𝐞𝐫𝐭𝐬. 𝐖𝐡𝐚𝐭 𝐰𝐢𝐥𝐥 𝐲𝐨𝐮 𝐝𝐨?”
+
+At first, it sounds simple.
+Pods are running → everything should be fine… right?
+Wrong.
+
+𝐖𝐡𝐚𝐭 𝐦𝐨𝐬𝐭 𝐜𝐚𝐧𝐝𝐢𝐝𝐚𝐭𝐞𝐬 𝐬𝐚𝐲
+❌ Check logs
+❌ Restart pods
+❌ Re-deploy
+Generic answers. No depth.
+
+𝐖𝐡𝐚𝐭 𝐚𝐜𝐭𝐮𝐚𝐥𝐥𝐲 𝐜𝐨𝐮𝐥𝐝 𝐛𝐞 𝐡𝐚𝐩𝐩𝐞𝐧𝐢𝐧𝐠
+Even if pods are Running, the system can still be broken:
+• Readiness probe failing → traffic not reaching pods
+• Service has no endpoints due to label mismatch
+• Ingress misconfiguration → traffic not routed
+• Downstream dependency (DB/API) failing
+• Network policy blocking communication
+
+𝐖𝐡𝐚𝐭 𝐚 𝐬𝐭𝐫𝐨𝐧𝐠 𝐚𝐧𝐬𝐰𝐞𝐫 𝐥𝐨𝐨𝐤𝐬 𝐥𝐢𝐤𝐞
+Step 1: Check Service → Endpoints
+Are pods actually attached?
+Step 2: Verify readiness vs liveness
+Are pods ready to receive traffic?
+Step 3: Check Ingress / Load Balancer
+Is traffic reaching the service?
+Step 4: Validate dependencies
+DB, cache, external APIs
+Step 5: Check recent changes
+Deployment, config, secrets 
+
+
+=====
+
+
+→ A client is observing latency in an application.
+What steps do you take to identify the root cause?
+Both rounds cleared. 
+Notice the pattern.
+Round 1 — tool knowledge. Ansible, Linux, Jenkins.
+Round 2 — real thinking. F5 design. Latency scenario.
+
+=======
+
+What interviewers expect:
+ • Stop writes immediately
+ • Attempt point-in-time recovery
+ • Validate snapshot selection
+
+====
+Issue J — CI fails due to flaky external APIs
+
+Tests depend on unstable third-party APIs, making CI unreliable.
+
+What interviewers expect:
+ • Isolate failing tests
+ • Mock or record API responses
+ • Gate integration tests separately
+
+=====
+Issue K — Time-consuming deployments
+
+Deployments take too long and block releases.
+
+What interviewers expect:
+ • Identify pipeline bottlenecks
+ • Parallelize steps
+ • Reduce unnecessary waits
+
+=====
+Issue L — Configuration files hard to maintain
+
+Large configs are error-prone and difficult to manage.
+
+What interviewers expect:
+ • Version control for configs
+ • Modularization
+ • Environment-specific overrides
+
+====
+Issue M — Logs hard to analyze
+
+Logs are noisy, inconsistent, or missing context.
+
+What interviewers expect:
+ • Centralized logging
+ • Structured log formats
+ • Better search and correlation
+
+=====
+Issue N — Poor security practices
+
+Vulnerabilities or misconfigurations are discovered.
+
+What interviewers expect:
+ • Regular security scans
+ • Strong access controls
+ • Patch and secrets management
+
+=====
+Issue O — Rollback caused a worse outage
+
+Rollback wasn’t compatible with DB or infra changes.
+
+What interviewers expect:
+ • Freeze traffic
+ • Forward-fix instead of blind rollback
+ • Backward-compatible releases
+
+=====
+Issue P — On-call burnout from noisy paging
+
+Low-value alerts overwhelm the on-call team.
+
+What interviewers expect:
+ • Alert prioritization
+ • Noise reduction
+ • Automated remediation
+
+=========
+
+Issue A — DB migration locks tables
+
+A schema change locks a large table, slowing the app or causing errors.
+
+Immediate response:
+Stop deploys, enable maintenance mode
+
+Long-term fix:
+Use non-blocking migrations (backfills, chunked updates)
+
+⸻
+
+Issue B — Expired TLS certificate
+
+Certificate expires, users see security errors, health checks fail.
+
+Immediate response:
+Replace certificate, failover if possible
+
+Long-term fix:
+Automated renewals + multiple expiry alerts
+
+⸻
+
+Issue C — Large cloud bill from runaway autoscaling
+
+A bug or test causes uncontrolled scaling and cost spikes.
+
+Immediate response:
+Apply scaling limits, stop runaway workloads
+
+Long-term fix:
+Cost alerts, autoscaling safeguards, load testing
+
+⸻
+
+Issue D — Secrets committed to Git
+
+A key or token is accidentally pushed to a repository.
+
+Immediate response:
+Rotate the secret immediately
+
+Long-term fix:
+Remove from git history, use secret managers & scanners
+
+⸻
+
+Issue E — Pods OOMKilled after config change
+
+Memory limits are wrong or a sidecar increases memory usage.
+
+Immediate response:
+Increase limits temporarily, rollback
+
+Long-term fix:
+Right-size resources, profile memory usage
+
+⸻
+
+Issue F — DNS propagation breaks failover
+
+After failover, DNS cache still routes traffic to old region.
+
+Immediate response:
+Reroute traffic at load balancer level
+
+Long-term fix:
+Short TTLs, health-checked global load balancers
+
+⸻
+
+Issue G — IAM policy change breaks automation
+
+Permission removal causes scheduled jobs to fail.
+
+Immediate response:
+Restore minimal required permissions
+
+Long-term fix:
+Policy simulation and permission testing
+
+———
+
+Issue H — Alerts routed to the wrong team
+
+Critical alerts go unnoticed.
+
+Immediate response:
+Manually escalate and fix routing
+
+Long-term fix:
+Alert catalog + routing tests
+
+
+============================
+
+Issue Q — Partial outage with “healthy” services
+
+Some users fail, others don’t. Health checks are green.
+Focus: traffic segmentation, caches, dependency timeouts
+
+====
+Issue R — Feature flag enabled, but behavior is inconsistent
+
+Same release, different outcomes across users.
+Focus: flag evaluation scope, cache, rollout strategy
+
+===
+Issue S — Queue depth stable, consumers lag behind
+
+No errors, but processing is delayed.
+Focus: consumer throttling, downstream backpressure
+
+====
+Issue T — Blue-green deploy succeeded, but old version still serves traffic
+
+Deployment says “complete”. Users disagree.
+Focus: LB config, DNS, connection draining
+
+====
+Issue U — Metrics show improvement, UX worsens
+
+Dashboards look better after optimization.
+User complaints increase.
+Focus: wrong metrics, missing user-centric signals
+
+====
+Issue V — Incident fixed, but recurs after a week
+
+No new changes were made.
+Focus: auto-scaling events, cron jobs, certificates, quotas
+
+=====
+Issue W — Canary looks good, full rollout fails
+
+Canary metrics were clean.
+Production isn’t.
+Focus: sample size, traffic patterns, hidden dependencies
+
+====
+Issue X — Infrastructure drift despite IaC
+
+No manual changes reported, but state differs.
+Focus: out-of-band updates, controllers, cloud defaults
+
+=======
+Issue Y — Rate limits hit only during retries
+
+Normal traffic is fine.
+Failures explode traffic.
+Focus: retry storms, exponential backoff, circuit breakers
+
+=======
+Issue Z — Post-incident fix causes new failure
+
+Original issue resolved.
+A different subsystem breaks.
+Focus: unintended coupling, blast-radius awareness
+
+=========
+
