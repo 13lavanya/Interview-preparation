@@ -1,0 +1,433 @@
+1. What is CI/CD?
+2. Difference between Continuous Delivery and Continuous Deployment?
+3. What is Jenkins?
+4. What is Jenkins Pipeline?
+5. What is Jenkinsfile?
+6. Difference between Declarative and Scripted Pipeline?
+7. What is webhook in Jenkins?
+8. What is Jenkins Agent?
+9. Difference between Jenkins Master and Agent?
+10. What is build artifact?
+11. What is pipeline as code?
+12. What is rollback in deployment?
+13. What is Blue-Green Deployment?
+14. What is Canary Deployment?
+15. What is Rolling Deployment?
+16. What is GitOps?
+17. What is DevSecOps?
+18. What is SonarQube?
+19. What is Quality Gate?
+20. What is artifact repository?
+21. What is Docker integration in Jenkins?
+22. What is Kubernetes integration in Jenkins?
+23. What causes Jenkins pipeline failure?
+24. What causes Jenkins Agent disconnection?
+25. What happens internally during pipeline execution?
+
+
+=====
+
+Jenkins Production Incident Questions (0–3 Years Experience)
+
+1) Jenkins pipelines suddenly stop triggering. How would you investigate?
+
+2) Build agents go offline during a critical release. What would you do?
+
+3) Pipeline execution time doubles overnight. How would you analyze it?
+
+4) Deployments fail even though builds succeed. What would you investigate?
+
+5) Jenkins master CPU reaches 100%. How would you troubleshoot?
+
+6) Credentials used by pipelines stop working. What would you verify?
+
+7) A plugin upgrade breaks multiple jobs. How would you respond?
+
+8) Artifact uploads fail after successful builds. What would you check?
+
+9) Rollback pipelines fail during a production outage. How would you troubleshoot?
+
+10) Git integration issues block deployments. What would you investigate?
+
+11) Parallel pipeline stages fail intermittently. How would you analyze them?
+
+12) Pipeline logs show success but deployments fail. What would you verify?
+
+13) Environment variables disappear unexpectedly. How would you troubleshoot?
+
+14) Jenkins cannot connect to Kubernetes agents. What would you investigate?
+
+15) Deployment approvals are bypassed accidentally. What risks would you assess?
+
+16) Monitoring alerts increase after pipeline changes. How would you investigate?
+
+17) A Jenkins issue causes a Sev-1 outage. What evidence would you collect?
+
+18) Which Jenkins logs are most useful during incidents?
+
+19) What metrics indicate CI/CD health issues?
+
+20) How would you identify pipeline bottlenecks quickly?
+
+21) What checks should be performed before releases?
+
+22) How would you reduce CI/CD-related outages?
+
+23) What should be documented in a Jenkins RCA?
+
+24) How would you improve deployment reliability?
+
+25) What preventive actions would reduce future incidents?
+
+
+=====
+1. What is Jenkins?
+
+2. Why is Jenkins used in DevOps?
+
+3. What is CI/CD Pipeline in Jenkins?
+
+4. What is Jenkinsfile?
+
+5. Difference between Declarative and Scripted Pipeline?
+
+6. What happens internally when Jenkins pipeline starts?
+
+7. What is Jenkins Agent?
+
+8. Difference between Jenkins Master and Agent?
+
+9. What causes Jenkins Agent disconnection?
+
+10. What is webhook in Jenkins?
+
+11. How does Git integrate with Jenkins?
+
+12. What is Jenkins workspace?
+
+13. What is build artifact in Jenkins?
+
+14. What is freestyle job in Jenkins?
+
+15. Difference between freestyle job and pipeline job?
+
+16. What is Blue Ocean in Jenkins?
+
+17. What is Jenkins shared library?
+
+18. What are Jenkins plugins?
+
+19. Why are plugins important in Jenkins?
+
+20. What causes Jenkins build failure?
+
+21. How do you troubleshoot Jenkins pipeline failure?
+
+22. What logs will you check during Jenkins issue?
+
+23. What is parameterized build in Jenkins?
+
+24. What is Jenkins credential management?
+
+25. Why should secrets not be hardcoded in Jenkins pipeline?
+
+26. What is Jenkins node labeling?
+
+27. What is parallel stage in Jenkins pipeline?
+
+28. What is rollback in CI/CD?
+
+29. What happens if deployment stage fails?
+
+30. Difference between Continuous Delivery and Continuous Deployment?
+
+31. How do you integrate Docker with Jenkins?
+
+32. How do you integrate Kubernetes with Jenkins?
+
+33. What is Jenkins backup strategy?
+
+34. What causes slow Jenkins performance?
+
+35. How do you secure Jenkins server?
+
+36. What is RBAC in Jenkins?
+
+37. What are common Production Jenkins issues?
+
+38. How do you monitor Jenkins health?
+
+39. What happens if Jenkins server goes down?
+
+40. How is Jenkins used in real-time DevOps projects?
+
+=====
+
+1. Pipeline passes every stage but production still has old code. Walk through every layer you check.
+2. Explain a real scenario where a rollback made things worse, not better.
+3. How do you safely run database migrations inside a CI/CD pipeline without locking the table?
+4. What problems arise when multiple teams share the same pipeline template, and how do you design around it?
+5. Difference between a deployment failure and a silent deployment failure - why the second one is more dangerous.
+6. How do you handle secrets in pipelines without exposing them in build logs?
+7. Explain pipeline drift. How do you detect when staging no longer matches what production actually runs?
+8. What happens internally when a deploy step times out but the previous step already pushed an image?
+9. How do you design a pipeline for 10 microservices without making every deploy take an hour?
+10. Explain blue-green vs canary vs rolling - when does choosing the wrong one cause an outage?
+11. How do approval gates actually work, and why are they dangerous if misconfigured?
+12. How do you refactor a legacy Jenkins pipeline without breaking active production deployments?
+13. What are partial deployments, and how do you recover safely when only half the services updated?
+14. What is the real difference between build failure and test failure, and why does mixing them up hide bugs?
+15. Describe a real incident caused by an unattended automatic production deploy. How did you fix it?
+
+===
+
+1) Jenkins pipeline succeeded but deployment failed in Kubernetes. What will you check first?
+
+2) Build completed successfully but the latest changes are not visible in Production. Why?
+
+3) Pipeline is stuck during deployment stage. Possible reasons?
+
+4) Docker image built successfully but Pods fail to start. What could be wrong?
+
+5) Application works locally but fails after CI/CD deployment. How will you investigate?
+
+6) Jenkins job suddenly started failing after months of successful execution. Possible reasons?
+
+7) Git repository contains the latest code but deployed application shows old behavior. Why?
+
+8) Pipeline execution time increased significantly. What bottlenecks will you investigate?
+
+9) Deployment succeeded but users started reporting outages immediately. How will you troubleshoot?
+
+10) Rollback was successful but the issue still exists. What could be wrong?
+
+11) Jenkins agent is online but builds are not getting triggered. Possible reasons?
+
+12) Pipeline fails while pulling dependencies from artifact repositories. How will you debug it?
+
+13) Docker image is pushed successfully but Kubernetes cannot pull it. Why?
+
+14) ArgoCD shows Synced status but application is not working. Possible reasons?
+
+15) GitOps deployment completed successfully but changes are not reflected in Production. Why?
+
+16) Secret update through CI/CD caused application failures. What will you investigate?
+
+17) ConfigMap changes were deployed successfully but application behavior did not change. Why?
+
+18) Deployment works in staging but fails in Production. What differences will you compare?
+
+19) Multiple services were deployed together and failures started immediately. How do you isolate the impacted service?
+
+20) Pipeline succeeded but monitoring alerts started firing after deployment. What will you check?
+
+21) Blue-Green deployment completed but some users still access the old version. Why?
+
+22) Canary deployment introduced intermittent issues. How will you identify the root cause?
+
+23) Production outage started immediately after deployment. How will you perform RCA?
+
+24) CI/CD pipeline completed successfully but customer transactions are failing. What hidden issues could exist?
+
+25) During a failed Production release, how do senior engineers decide between rollback, hotfix deployment, or continued troubleshooting?
+
+
+====
+
+
+AWS DevOps Jenkins Troubleshooting Questions (0–3 Years Experience)
+
+1. Jenkins pipeline suddenly failed. What will you check first?
+
+2. Jenkins service is down. How will you troubleshoot?
+
+3. Jenkins Agent went offline during build. Possible reasons?
+
+4. Pipeline stuck in running state for long time. Why?
+
+5. Git checkout stage failing in Jenkins. What could be wrong?
+
+6. Jenkins cannot connect to GitHub repository. Why?
+
+7. Webhook not triggering Jenkins pipeline. What will you verify?
+
+8. Docker build stage failing in Jenkins. Possible reasons?
+
+9. Jenkins deployment stage succeeded but application failed. Why?
+
+10. Jenkins workspace suddenly became full. What problems can happen?
+
+11. Jenkins server CPU usage reached 100%. What will you check?
+
+12. Jenkins builds became very slow suddenly. Possible reasons?
+
+13. Jenkins plugin update broke pipeline. How will you handle it?
+
+14. Jenkinsfile syntax error causing pipeline failure. How will you debug?
+
+15. Credentials are not working in Jenkins pipeline. Why?
+
+16. Jenkins pipeline cannot connect to Kubernetes cluster. What could be wrong?
+
+17. Jenkins unable to pull Docker image from registry. Why?
+
+18. Pipeline works in Dev but fails in Prod. Possible reasons?
+
+19. Jenkins logs are missing. What will you check?
+
+20. Build artifacts are not getting generated. Why?
+
+21. Jenkins disk space became full. What impact can happen?
+
+22. Jenkins restart happened during deployment. What risks can happen?
+
+23. Parallel stages failing randomly in pipeline. Possible reasons?
+
+24. Jenkins job stuck in queue state. Why?
+
+25. Jenkins shared library changes broke pipelines. How will you debug?
+
+26. Jenkins backup restoration failed. What could happen?
+
+27. Jenkins cannot access remote server through SSH. Why?
+
+28. What logs are important during Jenkins Production issues?
+
+29. What are the most common Jenkins Production issues?
+
+30. During CI/CD outage, what Jenkins checks will you perform first?
+
+
+====
+
+1) A pipeline passes all stages but production deployment fails. How would you investigate?
+
+2) CI jobs suddenly start failing without code changes. What would you check?
+
+3) Artifact generation succeeds but deployment fails. How would you troubleshoot?
+
+4) Pipeline execution time doubles overnight. How would you investigate?
+
+5) A rollback pipeline fails during a production outage. What would you do?
+
+6) Environment-specific variables cause deployment issues. How would you identify them?
+
+7) Build agents become unavailable during critical releases. How would you respond?
+
+8) Deployment approvals are bypassed accidentally. What risks would you assess?
+
+9) Secret injection fails during pipeline execution. How would you troubleshoot?
+
+10) A successful deployment introduces customer-facing errors. What would you verify?
+
+11) Container image builds fail intermittently. How would you investigate?
+
+12) Git integration issues block releases. What would you check?
+
+13) Parallel stages fail inconsistently. How would you troubleshoot?
+
+14) Infrastructure deployment succeeds but application deployment fails. What would you investigate?
+
+15) A production hotfix is delayed due to pipeline failures. How would you respond?
+
+16) Pipeline logs show no errors but deployment is unsuccessful. What would you analyze?
+
+17) CI/CD monitoring alerts are not generated during failures. What would you verify?
+
+18) A pipeline-related issue causes a Sev-1 outage. What evidence would you collect?
+
+19) Which metrics are most important for CI/CD reliability?
+
+20) How would you identify bottlenecks in the pipeline?
+
+21) What logs are essential during CI/CD incidents?
+
+22) How would you validate release readiness before deployment?
+
+23) What should be documented in a CI/CD RCA?
+
+24) How would you improve deployment success rates?
+
+25) What preventive actions would reduce CI/CD failures?
+
+===
+
+1️⃣ A pod is OOMKilled every 6 hours. You increased memory limit. It still happens. Why?
+
+2️⃣ Terraform plan shows 0 changes but your AWS console shows drift. How?
+
+3️⃣ Your Docker container works locally. Fails in Kubernetes. Same image. Why?
+
+4️⃣ Jenkins pipeline runs for 3 hours. Normal time is 20 minutes. Where do you look?
+
+5️⃣ EC2 instance passes status checks but app is not responding on port 80. Why?
+
+6️⃣ You added a new node to the cluster. Pods are still not scheduling on it. Why?
+
+7️⃣ S3 bucket is private. IAM policy allows access. Still getting 403. Why?
+
+8️⃣ Your deployment has 3 replicas. One replica is always unhealthy. Others are fine. Why?
+
+===
+
+AWS DevOps CI/CD Troubleshooting Questions (0–3 Years Experience)
+
+1. CI/CD pipeline suddenly failed. What will you check first?
+
+2. Build stage succeeded but deployment failed. Why?
+
+3. Deployment succeeded but application is not accessible. What could be wrong?
+
+4. Jenkins webhook not triggering pipeline. What will you verify?
+
+5. Git checkout stage failing in pipeline. Possible reasons?
+
+6. Docker build failing during CI process. Why?
+
+7. Kubernetes deployment failing from pipeline. What will you check?
+
+8. Terraform stage failing in CI/CD pipeline. Possible reasons?
+
+9. Pipeline works in Dev but fails in Prod. Why?
+
+10. Secrets are not loading in pipeline. What could be wrong?
+
+11. Pipeline execution became very slow suddenly. Possible reasons?
+
+12. Artifact generation failed during build. Why?
+
+13. Deployment rollback failed in Production. What will you do?
+
+14. Blue-Green deployment failed during traffic switch. What could happen?
+
+15. Canary deployment caused application instability. Why?
+
+16. Pipeline triggered multiple times unexpectedly. Possible reasons?
+
+17. Jenkins Agent disconnected during deployment. What impact can happen?
+
+18. Docker image pushed successfully but Kubernetes cannot pull it. Why?
+
+19. Application health checks failing after deployment. What will you verify?
+
+20. CI/CD pipeline consumed excessive server resources. What could cause it?
+
+21. Pipeline stuck in running state for long time. Why?
+
+22. Wrong application version deployed accidentally. How will you handle it?
+
+23. Production deployment started without approval accidentally. What risk can happen?
+
+24. Monitoring alerts increased immediately after deployment. What should you investigate?
+
+25. SSL certificate issues started after deployment. Possible reasons?
+
+26. Database migration failed during release. What impact can happen?
+
+27. Rollback succeeded but application still unstable. Why?
+
+28. What logs are important during CI/CD failures?
+
+29. What are the most common CI/CD Production issues?
+
+30. During critical deployment failure, what checks will you perform first
