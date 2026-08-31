@@ -41,4 +41,21 @@ sed	Stream editor	Searching and replacing text, line editing
  • A process is consuming high CPU or memory — how do you monitor and handle it?
  • A user can’t SSH into a server — how do you troubleshoot?
 
+The Breakdown of "400"
+Linux permissions use a three-digit octal code corresponding to three distinct user tiers: Owner, Group, and Others. [1, 2]
+text
+  chmod     4       0       0
+            │       │       │
+          Owner   Group   Others
+         (Read)  (None)   (None)
+Use code with caution.
+
+
+Each digit represents the mathematical sum of the enabled permissions for that tier: [1, 2, 3, 4]
+• Read (r) = 4
+• Write (w) = 2
+• Execute (x) = 1
+• First Digit (4): The owner has a score of 4 (Read only). They cannot write to or execute the file.
+• Second Digit (0): The group has a score of 0 (No permissions).
+Third Digit (0): All other users have a score of 0 (No permissions)
 
