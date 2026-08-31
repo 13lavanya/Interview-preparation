@@ -563,3 +563,52 @@ Behind the scenes, kube-proxy and iptables manage routing.
 ConfigMap: Stores non-sensitive configuration data (e.g., app settings, URLs).
 Secret: Stores sensitive data (e.g., passwords, tokens) in base64-encoded format.
 Both can be mounted as environment variables or volumes into Pods, but Secrets are encrypted at rest and access-controlled.
+
+🔧 DevOps Interview Prep – Helm Focus
+
+💡 Q1: You need to deploy multiple microservices with shared configs. How can Helm help?
+📝 Answer:
+Use Helm charts with values.yaml to define shared configs
+Create subcharts or use dependencies for modularity
+Override values per environment using --values or --set
+
+💡 Q2: You updated a Helm chart, but the changes didn’t reflect in the cluster. What could be wrong?
+📝 Answer:
+Check if values were overridden correctly
+Use helm upgrade --install to apply changes
+Validate chart version and release name
+Inspect rendered templates with helm template
+
+💡 Q3: You want to rollback a Helm deployment after a failed release. How do you do it?
+📝 Answer:
+Run: helm rollback <release-name> <revision-number>
+Use helm history to find the correct revision
+Monitor rollout status with kubectl get pods and helm status
+
+
+
+1️⃣ Project Introduction (2 Projects)
+👉 Be ready with 2 strong project overviews: your role, tools used, challenges faced, and results delivered. This gives recruiters confidence in your real-world skills.
+
+2️⃣ CI/CD Pipeline End-to-End
+👉 Explain how you build a pipeline with tools like Jenkins, GitHub Actions, Maven, SonarQube, Docker, Kubernetes, etc.
+👉 Cover plugins, integrations, and how you ensured code quality + deployment success.
+
+3️⃣ Architecture of Kubernetes Cluster
+👉 Walk through control plane, worker nodes, pods, services, ingress, and monitoring setup.
+👉 Explain scaling, resilience, and security.
+
+4️⃣ Cloud Fundamentals (AWS / Azure)
+👉 How do you create resources like Lambda Functions, Storage Accounts, VMs, Networking?
+👉 Show hands-on understanding, not just theory.
+
+5️⃣ Linux + Scripting
+👉 Basic commands (file mgmt, networking, processes) + scripting (bash/python).
+👉 Companies value engineers who can automate and troubleshoot on Linux.
+
+6️⃣ Troubleshooting Scenarios 
+👉 Share 5–6 real issues you solved: failed deployments, node failures, merge conflicts, pipeline errors, scaling issues, resource limits, etc.
+
+
+
+
