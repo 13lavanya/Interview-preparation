@@ -1,0 +1,112 @@
+#DockerScenario_Interview_Questions (0–4 Years DevOps Engineer)
+
+🔹 Docker container suddenly stops running. What will you check first?
+🔹 Container status shows Exited. What happened?
+🔹 Container keeps restarting continuously. Why?
+🔹 Docker image build suddenly fails. What next?
+🔹 Application works locally but fails inside container. Why?
+
+🔹 Container starts but application is inaccessible. What happened?
+🔹 Port mapping is configured but traffic fails. Why?
+🔹 Docker network communication fails. What next?
+🔹 Container DNS resolution suddenly stops working. Why?
+🔹 Multiple containers cannot communicate. What happened?
+
+🔹 Container CPU usage reaches 100%. What will you investigate?
+🔹 Memory utilization continuously increases. Why?
+🔹 Disk usage suddenly becomes full. What next?
+🔹 Container becomes slow unexpectedly. What happened?
+🔹 Logs suddenly stop appearing. Why?
+
+🔹 Environment variables are missing inside container. What happened?
+🔹 Secrets fail to load during runtime. Why?
+🔹 Volume mounting suddenly stops working. What next?
+🔹 Docker registry authentication fails. What happened?
+🔹 Image pull suddenly fails in production. Why?
+
+🔹 Jenkins deployment to Docker fails. What next?
+🔹 Container health checks continuously fail. Why?
+🔹 Multiple containers fail simultaneously. What will you check?
+🔹 Auto restart policy does not work. Why?
+🔹 Monitoring shows repeated container alerts. What happened?
+
+🔹 Container works in development but fails in production. Why?
+🔹 Traffic suddenly increases by 10x. What will you do?
+🔹 Host server resources become exhausted. What next?
+🔹 Disaster recovery for containers fails. What happened?
+🔹 Complete Docker environment outage happens. What are your first 5 actions?
+
+
+=====
+
+1. Container exits immediately after starting — What might be the reason?
+
+2. What is the purpose of EXPOSE in a Dockerfile?
+
+3. Port is not accessible on localhost even after port mapping — Why?
+
+4. Data is lost when container stops and restarts — How will you fix it?
+
+5. You made a change in your code, rebuilt the image, but the change isn't reflected — Why?
+
+6. App crashes with "Permission Denied" in container but works fine on localhost — What's the fix?
+
+7. Docker host is running out of disk space — How do you clean up?
+
+8. How will you debug a live container?
+
+9. Which container registry do you use in your organization?
+
+10. Explain the difference between CMD and ENTRYPOINT in Docker.
+
+11. When will you forcefully remove a container and how?
+
+🔧 DevOps Interview Prep – Docker 
+
+💡 Q1: What is the difference between CMD and ENTRYPOINT in Docker?
+📝 Answer:
+CMD provides default arguments to the container’s executable.
+ENTRYPOINT defines the executable itself.
+You can override CMD at runtime, but ENTRYPOINT is fixed unless explicitly overridden.
+
+💡 Q2: What is the purpose of .dockerignore and how does it help?
+📝 Answer:
+The .dockerignore file excludes unnecessary files and directories from the Docker build context.
+This reduces build time, keeps images clean, and avoids leaking sensitive files (e.g., .env, node_modules, .git).
+Think of it like .gitignore but for Docker builds.
+
+💡 Q3: How do you handle environment-specific configurations in Docker?
+📝 Answer:
+Use environment variables (ENV, --env)
+Externalize configs using .env files or config maps (in Kubernetes)
+Use templating tools like envsubst or Docker Compose profiles
+Avoid hardcoding secrets—use secret management tools like Azure Key Vault
+
+========
+
+
+💡 Q1: What is the difference between a Docker image and a Docker container?
+📝 Answer:
+Docker Image: A blueprint or snapshot of an application and its dependencies.
+Docker Container: A running instance of a Docker image.
+Think of the image as a class and the container as an object created from that class.
+
+💡 Q2: What is a multi-stage build in Docker and why is it useful?
+📝 Answer:
+A multi-stage build allows you to use multiple FROM statements in a Dockerfile.
+It helps reduce image size by separating build tools from the final runtime image.
+Example: FROM node:18 AS builder
+ WORKDIR /app
+ COPY . .
+ RUN npm install && npm run build
+ FROM nginx:alpine
+ COPY --from=builder /app/dist /usr/share/nginx/html
+
+💡 Q3: How do you optimize Docker images for production?
+📝 Answer:
+Use multi-stage builds to keep images lean.
+Choose minimal base images (e.g., alpine).
+Clean up unnecessary files (rm -rf /tmp/*).
+Use .dockerignore to exclude files from the build context.
+Pin versions of dependencies to avoid unexpected changes.
+
