@@ -1,170 +1,565 @@
-1️⃣ Can you explain the CI/CD pipeline flow in your project from code commit to production?
-2️⃣ What tools have you used for CI/CD automation?
-3️⃣ What happens when a developer pushes code to Git? Explain the pipeline trigger.
-4️⃣ What is the difference between Continuous Integration, Continuous Delivery, and Continuous Deployment?
-5️⃣ How do you build and package applications in your pipeline?
-6️⃣ How do you perform code quality checks and security scanning in CI/CD?
-7️⃣ How do you create and store artifacts (Docker images / build packages)?
-8️⃣ How does the pipeline deploy applications to Dev, QA, Staging, and Production environments?
-9️⃣ How do you ensure zero downtime deployments during releases?
-🔟 What is the difference between Blue-Green deployment and Rolling deployment?
-1️⃣1️⃣ What will you do if a CI/CD pipeline fails during deployment?
-1️⃣2️⃣ A new release is deployed but users start reporting errors. How do you troubleshoot?
-1️⃣3️⃣ How do you rollback a deployment if something goes wrong in production?
-1️⃣4️⃣ How do you secure secrets and credentials in CI/CD pipelines?
-1️⃣5️⃣ How do you optimize slow pipelines and reduce build time?
-
-⚙️ DevOps & CI/CD
- • What are your day-to-day activities as a DevOps Engineer?
- • How do you ensure stability and efficiency in CI/CD and cloud environments?
- • Explain your CI/CD pipeline flow.
- • What happens during Continuous Delivery (CD)?
- • How do you manage pipeline configurations and rollback strategies?
+1. Tell me about yourself
+2. What are policies in Auto Scaling?
+3. How do path-based routing and host-based routing work in ALB, and which has priority?
+4. How can you give SSH access to an EC2 instance without sharing the PEM key?
+5. What is Terraform lifecycle?
+6. Difference between count and for_each in Terraform?
+7. What is a data block and how is it different from a dynamic block?
+8. What are provisioners in Terraform?
+9. What are the parameters of SonarQube and how do you test an application?
+10. If production keys are exposed, how do you troubleshoot and resolve the issue?
+11. How do you upgrade a Kubernetes cluster without downtime?
+12. which Kubernetes version you have used?
+13. What are liveness and readiness probes?
+14. What are static pods and how do you handle them?
+15. Explain niginx pod structure
+16. Explain Kubernetes deployment YAML file
 
 
-💡 Q1: How will you set up CI/CD?
-📝 Answer:
-Use Azure DevOps, GitHub Actions, or Jenkins
-Define pipelines for build, test, and deploy stages
-Integrate with version control (e.g., Git)
-Use Quality Gates (e.g., SonarQube)
-Automate deployments to environments like Dev, QA, and Prod
+======
 
-💡 Q2: How will you handle monitoring and alerting?
-📝 Answer:
-Use Azure Monitor, Prometheus, or Grafana
-Set up metrics and logs collection
-Configure alerts for CPU, memory, disk, and app errors
-Use Log Analytics for deep insights
-Integrate alerts with email, Slack, or Teams
 
-💡 Q3: What about scaling, security, and disaster recovery?
-📝 Answer:
-Scaling: Use VM Scale Sets, Kubernetes HPA, or App Service autoscaling
-Security: Apply RBAC, use Azure Key Vault, enable network security groups (NSGs)
-Disaster Recovery: Set up backup policies, use geo-redundant storage, and configure failover strategies
+L2 interview questions. #Terraform #devops #devopscomunity #interview
 
-Top Git Interview Questions for DevOps Engineers :
-
-1. What is the difference between git fetch and git pull?
-👉 git fetch downloads the latest changes from the remote repository but does not merge them into your current branch.
-👉 git pull downloads and automatically merges the changes into your current branch.
-
-2. What is the difference between git merge and git rebase?
-👉 git merge combines branches and creates a merge commit, preserving branch history.
-👉 git rebase moves your commits on top of another branch, creating a cleaner and more linear history.
-
-3. What is a Git Branch?
-👉 A branch is an independent line of development that allows developers to work on features or bug fixes without affecting the main codebase.
-
-4. What is a Pull Request (PR)?
-👉 A Pull Request is a request to merge code changes from one branch into another. It allows code reviews and approval before merging.
-
-5. What is a Merge Conflict?
-👉 A merge conflict occurs when Git cannot automatically determine which changes to keep while merging branches. The conflict must be resolved manually.
-
-6. What is Git Stash?
-👉 Git Stash temporarily saves uncommitted changes so you can switch branches or perform other tasks without committing incomplete work.
-
-7. Explain the Git Workflow.
-👉 Working Directory → Staging Area → Local Repository → Remote Repository
-This is the basic workflow followed when developing and pushing code changes.
-
-8. What is the difference between git clone and git pull?
-👉 git clone creates a complete local copy of a remote repository.
-👉 git pull updates an existing local repository with the latest changes from the remote repository.
-
-9. How do you undo the last commit?
-👉 git reset --soft HEAD~1 removes the commit but keeps the changes.
-👉 git reset --hard HEAD~1 removes both the commit and the changes.
-👉 git revert <commit-id> creates a new commit that reverses the previous changes.
-
-10. How does Jenkins trigger a build when code is pushed to Git?
-👉 Git repositories can send a webhook notification to Jenkins whenever code is pushed. Jenkins receives the event and automatically triggers the CI/CD pipeline.
+What are provisioners in Terraform?
+Explain dynamic block code and explain with an example?
+What is SVC in Kubernetes? How does it communicate in real-time?
+How do you achieve zero downtime in Terraform?
+Kubernetes deploy: How do you update manifest files in the Jenkins deploy pipeline?
+A VPC is created manually in Terraform. How do you configure in Terraform?
+crashloopbackoff explain?
+How do you start the backend pod first and then the frontend pod in k8s? Walk me through the steps?
+What is a rolling update strategy? What deployment strategy do you follow in your organisation?
 
 
 =====
 
-Git Scenario-Based Interview Questions & Answers (Part 3)
-15. ArgoCD shows OutOfSync after someone used kubectl edit.
-✅ Answer:
-Git contains desired state.
-Manual change modified actual cluster state.
-ArgoCD detects drift.
-Fix:
-argocd app sync
-or revert manual changes.
+interview questions LTI #Devops #Terraform #devopscomunity
+How do you write Terraform code to create a Virtual Network (VNet) in Azure?
+What is a Terraform state file, and why is it important?
+How do you unlock a Terraform state file when another user is already working on it?
+What are implicit and explicit dependencies in Terraform? Can you explain with examples?
+What is the difference between count and for_each in Terraform?
+What are parent modules and child modules in Terraform?
+How do you create infrastructure in multiple locations/regions using Terraform?
+What is an artifact in DevOps or CI/CD pipelines?
+How do you set up a Kubernetes cluster from scratch?
+What are the best practices you implemented in your last DevOps project?
+How do you manage Terraform remote backend and state locking in a team environment?
 
-16. When would you use Cherry-Pick instead of Merge?
-✅ Answer:
-Use Cherry-Pick when only one specific commit is required.
-git cherry-pick <commit-id>
-Example:
- A production hotfix exists in another branch and only that fix is needed.
+====
 
-17. Which branching strategy would you use for 50 microservices?
-✅ Answer:
-Prefer Trunk-Based Development.
-Benefits:
-Faster releases
-Fewer merge conflicts
-Better CI/CD integration
-GitFlow may become difficult to manage at scale.
+What is a Terraform state lock error?
 
-18. Monorepo vs Multiple Repositories?
-✅ Answer:
-Monorepo
- ✔ Easier dependency management
- ✔ Unified CI/CD
-❌ Large repository size
- ❌ Longer build times
-Multiple Repositories
- ✔ Better isolation
- ✔ Independent releases
-❌ Harder cross-service changes
+How do you fix a corrupted Terraform state?
 
-19. Local repository reports: "fatal: object is corrupted"
-✅ Answer:
-Verify repository:
-git fsck
-Recover:
-Re-clone repository
-Restore missing objects
-Recover from backup
+What is terraform force-unlock?
 
-20. How would you implement Git governance for 500 developers?
-✅ Answer:
-Enforce:
-✔ Branch protection rules
- ✔ Mandatory Pull Requests
- ✔ Code owner approvals
- ✔ Secret scanning
- ✔ Signed commits
- ✔ Automated security checks
- ✔ CI/CD validations before merge
- ✔ Least-privilege repository access
- ✔ Audit logging
- ✔ Repository templates and standards
+What causes CIDR overlap errors?
 
-🔥 Most Frequently Asked Scenario Questions
-Git Reset vs Git Revert
-Merge vs Rebase
-Recover deleted branch
-Recover overwritten commits
-Force Push recovery
-Secret removal from Git history
-Cherry-Pick use cases
-GitHub Actions troubleshooting
-Monorepo vs Polyrepo
-GitOps drift handling
-Resolving complex merge conflicts
-Branching strategy selection
-Repository size optimization
-Interactive Rebase
-Trunk-Based Development vs GitFlow
+How do you handle “resource already exists” errors?
+
+What causes provider version conflicts?
+
+How do you create multiple identical EC2 instances in Terraform?
+
+Difference between count and for_each?
+
+When should you use count?
+
+When should you use for_each?
+
+How do you create EC2 instances with different sizes?
+
+How do you create 5 identical EC2 instances?
+
+How do you tag EC2 instances dynamically?
+
+Why is Auto Scaling preferred over multiple EC2 instances?
+
+How do you integrate AWS with Jenkins?
+
+Why is IAM role better than access keys?
+
+What permissions are required for Jenkins to create EC2/VPC?
+
+How do you test AWS access from Jenkins?
+
+How does Jenkins deploy infrastructure using Terraform?
+
+====
+
+🙄Interview Experience - Angel one - DevOps engineer🧳
+
+1. Explain your complete CI/CD workflow used in the project
+2. A deployment succeeded but the application is not accessible. How will you troubleshoot?
+3. How do you identify whether an issue is related to the application, database, or network?
+4. A pod is stuck in CrashLoopBackOff. What checks will you perform?
+5. Difference between git fetch, git pull, and git rebase?
+6. How do you rollback a failed deployment in production?
+7. GitHub Actions pipeline suddenly failed without code changes. How will you debug it?
+8. Explain how GitHub Actions securely connects with AWS. Explain pre checks and post checks?
+9. Terraform state file is corrupted or missing resources. What will you do?
+10. Explain ENTRYPOINT vs CMD with a practical use case
+11. Application works locally but fails in Kubernetes. How will you approach debugging?
+12. How do Prometheus and Grafana work together in monitoring? Logs, traces, metrics
+13. Monitoring alerts started firing after deployment. How do you verify whether it’s a real issue?
+14. How do you reduce duplicate alerts. Hw to u identify.
+15. Explain one real-time production issue you solved end-to-end
 
 
-https://argo-cd.readthedocs.io/en/stable/getting_started/
-https://github.com/open-gitops
+=====
+
+Capgemini L2 interview questions. #Terraform #devops #devopscomunity #interview
+What are provisioners in Terraform?
+Explain dynamic block code and explain with an example?
+What is SVC in Kubernetes? How does it communicate in real-time?
+How do you achieve zero downtime in Terraform?
+Kubernetes deploy: How do you update manifest files in the Jenkins deploy pipeline?
+A VPC is created manually in Terraform. How do you configure in Terraform?
+crashloopbackoff explain?
+How do you start the backend pod first and then the frontend pod in k8s? Walk me through the steps?
+What is a rolling update strategy? What deployment strategy do you follow in your organisation?
 
 
+====
+
+#Kubernetes_Interview_Questions (0–4 Years DevOps Engineer)
+
+🔹 How will you troubleshoot pods stuck in Pending state?
+🔹 How will you troubleshoot CrashLoopBackOff issues?
+🔹 How will you troubleshoot ImagePullBackOff errors?
+🔹 How will you troubleshoot worker nodes becoming NotReady?
+🔹 How will you troubleshoot service communication failures?
+
+🔹 How will you decide between Deployment and StatefulSet?
+🔹 How will you decide between ClusterIP and LoadBalancer?
+🔹 How will you decide pod resource limits?
+🔹 How will you decide replica counts?
+🔹 How will you decide namespace strategies?
+
+🔹 How will you scale Kubernetes applications?
+🔹 How will you scale worker nodes?
+🔹 How will you scale pods automatically?
+🔹 How will you scale high traffic applications?
+🔹 How will you scale production clusters?
+
+🔹 How will you secure Kubernetes clusters?
+🔹 How will you secure Secrets?
+🔹 How will you secure service accounts?
+🔹 How will you secure API access?
+🔹 How will you secure container images?
+
+🔹 How will you monitor Kubernetes clusters?
+🔹 How will you monitor pod health?
+🔹 How will you monitor cluster resources?
+🔹 How will you monitor application performance?
+🔹 How will you monitor production issues?
+
+🔹 How will you recover failed deployments?
+🔹 How will you recover failed worker nodes?
+🔹 How will you recover production applications?
+🔹 How will you recover cluster failures?
+🔹 How will you recover complete Kubernetes environments?
+
+====
+
+🔹 How would you troubleshoot a failed Pod in Kubernetes?
+🔹 How would you handle high CPU or memory usage in a Kubernetes cluster?
+🔹 How would you manage zero-downtime deployments in Kubernetes?
+🔹 How would you troubleshoot "CrashLoopBackOff" issues?
+🔹 How would you handle node failures in a production environment?
+🔹 How would you scale applications during high traffic?
+🔹 How would you secure Kubernetes clusters in production?
+🔹 How would you manage secrets securely in Kubernetes?
+🔹 How would you troubleshoot networking issues between Pods?
+🔹 How would you handle persistent storage failures?
+🔹 How would you monitor Kubernetes clusters effectively?
+🔹 How would you implement disaster recovery in Kubernetes?
+🔹 How would you troubleshoot failed rolling updates?
+🔹 How would you optimize Kubernetes resource utilization?
+🔹 How would you manage multi-environment deployments in Kubernetes?
+🔹 How would you handle image pull errors in production?
+🔹 How would you implement blue-green deployments in Kubernetes?
+🔹 How would you troubleshoot Ingress controller issues?
+🔹 How would you reduce downtime during cluster upgrades?
+🔹 How would you manage RBAC permissions in Kubernetes?
+
+====
+
+How do you design and implement a highly available CI/CD pipeline for production environments?
+Explain the difference between Blue-Green Deployment and Canary Deployment. Which one have you used in real-time projects?
+How do you troubleshoot pod-to-pod communication issues in Kubernetes clusters?
+What strategies do you use to secure secrets and sensitive data in DevOps pipelines?
+Describe your experience with Infrastructure as Code tools like Terraform or Ansible in multi-cloud environments.
+How do you monitor and optimize Kubernetes cluster performance in production?
+Explain how you handle zero-downtime deployments in microservices architecture.
+What are the key differences between Docker Swarm and Kubernetes, and why is Kubernetes preferred in enterprise environments?
+How do you implement observability using tools like Prometheus, Grafana, ELK, or Splunk?
+Describe a critical production issue you handled recently and explain your troubleshooting approach step by step.
+
+
+====
+
+
+𝐊𝐮𝐛𝐞𝐫𝐧𝐞𝐭𝐞𝐬, 𝐂𝐈/𝐂𝐃 & 𝐏𝐫𝐨𝐣𝐞𝐜𝐭-𝐁𝐚𝐬𝐞𝐝 𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧𝐬
+1. How do you integrate third-party tools/services in your pipeline?
+2. Explain your complete CI/CD pipeline in your project.
+3. How do you implement zero-downtime deployments?
+4. Difference between Rolling, Blue-Green, and Canary deployments.
+5. How does Kubernetes service discovery work?
+6. Explain how auto-scaling works in your project.
+7. How do you manage secrets across environments?
+8. Explain your monitoring and alerting setup.
+9. How do you handle production failures or outages?
+10. How does your rollback mechanism work?
+11. How do services communicate securely in your architecture?
+
+𝐃𝐨𝐜𝐤𝐞𝐫, 𝐋𝐢𝐧𝐮𝐱 & 𝐂𝐨𝐫𝐞 𝐂𝐨𝐧𝐜𝐞𝐩𝐭𝐬
+1. What happens internally when you run a Docker container?
+2. Difference between CMD and ENTRYPOINT.
+3. Difference between image, container, and volume.
+4. How do you debug high CPU or memory usage in Linux?
+5. Explain DNS resolution flow step by step.
+6. Difference between TCP and UDP.
+7. What is a reverse proxy?
+8. How does load balancing work?
+9. What causes CrashLoopBackOff in Kubernetes?
+10. How do you debug a pod that is Running but inaccessible?
+
+𝐓𝐞𝐫𝐫𝐚𝐟𝐨𝐫𝐦, 𝐂𝐥𝐨𝐮𝐝 & 𝐈𝐧𝐟𝐫𝐚𝐬𝐭𝐫𝐮𝐜𝐭𝐮𝐫𝐞
+1. How does Terraform state management work?
+2. What is Terraform drift?
+3. Difference between count and for_each.
+4. How do you design infra for Dev/UAT/Prod environments?
+5. How do you secure cloud infrastructure?
+6. Difference between public and private subnets.
+7. Explain IAM roles and policies.
+8. What is autoscaling in cloud environments?
+9. How do you implement disaster recovery? 
+
+𝐌𝐨𝐧𝐢𝐭𝐨𝐫𝐢𝐧𝐠, 𝐒𝐞𝐜𝐮𝐫𝐢𝐭𝐲 & 𝐑𝐞𝐥𝐢𝐚𝐛𝐢𝐥𝐢𝐭𝐲
+1. Difference between logs, metrics, and traces.
+2. How do you implement centralized logging?
+3. What is SLO/SLA/Error Budget?
+4. How do you secure container images?
+5. How do you detect bottlenecks in production systems?
+6. How do you approach RCA (Root Cause Analysis)?
+7. How do you reduce alert fatigue?
+
+
+
+Terraform
+8) What is data source in terraform? Give an example where we can use?
+9) What is key differences terraform fmt vs terraform validate?
+10) What is Lifecycle Meta-Argument in Terraform?
+11) If I want to mark terraform variable as sensitive how to mark? what happened if the mark?
+
+Kubernetes:
+12) What is Readiness Probe vs Liveness Probe in Kubernetes?
+13) Explain what is Deployment and StatefulSet with the example?
+14) Explain what is Deployment and StatefulSet with the example?
+15) What types of services in Kubernetes and explain each one?
+16) What do you understand by Taints and Tolerations?
+17) What is Persistent Volume (PV) & Persistent Volume Claim (PVC)? How it works?
+
+Jenkins
+18) What is GitHub Action? Have you use in your project?
+19) How many types of Jenkins pipelines and which one you use in your project? Why?
+20) Suppose your Jenkins pipelines is stuck how to troubleshoot step by step?
+21) How do you integrate Jenkins with Git? Which plugin is required for this integration
+22) Can you explain the role of build executors in Jenkins, and how many executors were configured in your project?
+
+
+===
+
+📌 CI/CD / Application Deployment
+7. Have you worked on CI/CD pipelines?
+8. What kind of applications have you deployed?
+WordPress?
+Angular?
+Java?
+Node.js?
+TypeScript applications?
+9. Explain the CI/CD flow for a Node.js application deployment.
+10. How would you decide the EC2 instance type for a backend application considering: 
+workload analysis
+deployment
+CI/CD setup
+cost optimization responsibility
+11. What would be your complete approach from deployment → optimization → monitoring?
+
+📌 Docker / Troubleshooting
+12. Suppose a Docker container starts and crashes immediately. How would you troubleshoot it? Which commands would you use?
+13. You deployed a Node.js application inside Docker and found heap memory issues in logs. How would you handle it?
+
+📌 Microservices / Scalability
+14. Two microservices are running:
+Payment Gateway service
+Node.js application
+How will these services communicate? What communication methods would you use between microservices?
+15. Suddenly, the payment gateway receives 5000 requests within milliseconds. What will you do?
+
+===
+
+☸️ Kubernetes & Containers
+🔹 Troubleshooting Pods in CrashLoopBackOff state
+🔹 Deployment vs StatefulSet vs DaemonSet
+🔹 Kubernetes service discovery explained
+🔹 How Ingress works internally
+🔹 HPA and cluster autoscaling concepts
+🔹 Taints & Tolerations use cases
+🔹 Debugging Pod-to-Pod networking issues
+🔹 Kubernetes security best practices
+
+⚙️ CI/CD & Automation
+🔹 Explain your end-to-end CI/CD pipeline
+🔹 Blue-Green vs Canary Deployments
+🔹 Zero-downtime deployment strategies
+🔹 Rollback mechanisms in production
+🔹 Managing secrets in pipelines
+🔹 Jenkins / Azure DevOps / GitHub Actions challenges
+🔹 Handling production deployment failures
+
+🏗️ Terraform & Infrastructure as Code
+🔹 Terraform state management
+🔹 Remote backend & state locking
+🔹 Terraform modules best practices
+🔹 count vs for_each
+🔹 Handling Terraform drift
+🔹 Structuring Terraform for large-scale infrastructure
+🔹 Deploying AWS EKS using Terraform
+
+📊 Monitoring & Troubleshooting
+🔹 Prometheus & Grafana architecture
+🔹 Troubleshooting high CPU / memory usage
+🔹 Handling production outages
+🔹 Centralized logging strategies
+🔹 Metrics vs Logs vs Traces
+🔹 Root Cause Analysis (RCA) approach
+🔹 Alerting and monitoring best practices
+━━━━━━━━━━━━━━━━━━━━━━
+🐧 Linux & Networking
+🔹 Linux boot process
+🔹 DNS resolution flow
+🔹 TCP vs UDP
+🔹 NAT Gateway vs Internet Gateway
+🔹 CIDR & subnetting concepts
+🔹 Disk space troubleshooting in Linux
+🔹 Reverse Proxy and Load Balancing
+===
+
+• Explain your experience with Docker and Kubernetes.
+• How do you secure CI/CD pipelines?
+• Explain Blue-Green vs Canary deployment strategies.
+• How do you manage secrets in cloud environments?
+• Explain your Terraform module strategy.
+• How do you handle infrastructure drift?
+• What monitoring tools have you used?
+• Explain container orchestration challenges you faced.
+• How do you implement auto-scaling in cloud platforms?
+
+
+17. What is the difference between Deployment, StatefulSet, and DaemonSet?
+18. What are Pod Security Standards (PSS) in Kubernetes, and how do they enforce security?
+19. What is a Pod Disruption Budget (PDB), and why is it important?
+20. How does Kubernetes service discovery work internally?
+21. How does Kubernetes scheduling decide pod placement?
+
+### 🔹 Terraform / IaC
+
+22. What is the purpose of Terraform state, and why is remote state important?
+23. How do you manage multiple environments (dev, staging, prod) in Terraform?
+24. What happens if Terraform state file is deleted and no backup exists?
+25. How do you handle drift detection in Terraform-managed infrastructure?
+1. What happens internally when Docker container starts?
+
+2. Difference between Docker Image and Container?
+
+3. What is Docker Layer Caching?
+
+4. Difference between CMD and ENTRYPOINT?
+
+5. What is multi-stage Docker build?
+
+6. What causes Docker container restart loop?
+
+7. Difference between COPY and ADD in Dockerfile?
+
+8. What is Docker Volume?
+
+9. Difference between Bind Mount and Volume?
+
+10. What is Docker Network?
+
+11. Difference between Bridge Network and Host Network?
+
+12. What causes ImagePullBackOff in Kubernetes?
+
+13. How do you troubleshoot Docker container crash?
+
+14. What is container isolation?
+
+15. Difference between Virtual Machine and Container?
+
+16. What is CI/CD Pipeline?
+
+17. What happens internally during CI/CD execution?
+
+18. Difference between Continuous Delivery and Continuous Deployment?
+
+19. What is Jenkins Pipeline?
+
+20. Difference between Declarative and Scripted Pipeline?
+
+21. What is Jenkinsfile?
+
+22. What causes Jenkins build failure?
+
+23. What causes Jenkins Agent disconnection?
+
+24. How does webhook work in CI/CD?
+
+25. What is artifact in CI/CD?
+
+26. What is Blue-Green Deployment?
+
+27. Difference between Canary Deployment and Rolling Deployment?
+
+28. What is rollback in deployment?
+
+29. How do you troubleshoot failed deployment?
+
+30. What is pipeline as code?
+
+31. Difference between Build stage and Deploy stage?
+
+32. What is SonarQube and why is it used?
+
+33. What is quality gate in CI/CD?
+
+34. What happens if deployment succeeds but application fails?
+
+35. What is Infrastructure as Code?
+
+36. What is GitOps?
+
+37. Difference between Manual Deployment and Automated Deployment?
+
+38. What are common causes of pipeline failure?
+
+39. How do you secure CI/CD pipeline?
+
+40. What monitoring tools are used after deployment?
+
+
+SonarQube is a static code analysis tool that helps developers measure and improve the quality, security, and maintainability of source code.
+It automatically analyzes code and identifies:
+	• 🐛 Bugs
+	• 🔒 Security vulnerabilities
+	• ⚠️ Code smells (poor coding practices)
+	• 📊 Code coverage from tests
+	• 🔄 Duplicate code
+	• 🏆 Quality metrics and technical debt
+
+
+A Jenkinsfile is a text file that defines your CI/CD pipeline as code.
+Instead of configuring jobs manually in the Jenkins UI, you write all the pipeline stages, steps, and logic in a Jenkinsfile and store it in your source code repository (Git).
+Why use a Jenkinsfile?
+	• Version-controlled along with application code
+	• Easy to review through pull requests
+	• Reusable and maintainable
+	• Consistent pipelines across environments
+	• Supports Pipeline as Code
+
+
+Helm 
+
+🔧 DevOps Interview Prep – Helm Focus
+
+💡 Q1: You need to deploy multiple microservices with shared configs. How can Helm help?
+📝 Answer:
+Use Helm charts with values.yaml to define shared configs
+Create subcharts or use dependencies for modularity
+Override values per environment using --values or --set
+
+💡 Q2: You updated a Helm chart, but the changes didn’t reflect in the cluster. What could be wrong?
+📝 Answer:
+Check if values were overridden correctly
+Use helm upgrade --install to apply changes
+Validate chart version and release name
+Inspect rendered templates with helm template
+
+💡 Q3: You want to rollback a Helm deployment after a failed release. How do you do it?
+📝 Answer:
+Run: helm rollback <release-name> <revision-number>
+Use helm history to find the correct revision
+Monitor rollout status with kubectl get pods and helm status
+
+
+🔧 DevOps Interview Prep – Kubernetes (AKS Focus)
+
+💡 Q1: You deployed a StatefulSet, but the Pods are not starting. What could be the issue?
+📝 Answer:
+Check if the required PersistentVolumeClaims (PVCs) are bound
+Ensure the StorageClass exists and is correctly configured
+Validate headless service and DNS settings
+Use kubectl describe pod and kubectl get pvc for debugging
+
+💡 Q2: You need to roll back a failed Deployment update. How do you do it?
+📝 Answer:
+Run: kubectl rollout undo deployment/<name>
+Check history: kubectl rollout history deployment/<name>
+Monitor rollback: kubectl rollout status deployment/<name>
+👉 Make sure image tags are versioned properly to avoid rollback issues
+
+💡 Q3: You need to restrict access to a Kubernetes Service to only internal cluster traffic. How do you do that?
+📝 Answer:
+Use ClusterIP type for the Service
+Avoid NodePort or LoadBalancer
+Optionally, use NetworkPolicies to restrict Pod communication
+
+======
+
+🔧 DevOps Interview Prep – Kubernetes (AKS Focus)
+
+💡 Q1: What is a Kubernetes Namespace and why is it useful?
+📝 Answer:
+A Namespace in Kubernetes is a way to divide cluster resources between multiple users or teams.
+It helps organize and isolate resources like Pods, Services, and Deployments.
+Useful for multi-tenant environments, CI/CD pipelines, and managing resource quotas.
+
+💡 Q2: What is the role of kubelet in Kubernetes?
+📝 Answer:
+The kubelet is an agent that runs on each node in the cluster.
+It ensures containers are running in a Pod by communicating with the control plane.
+It watches for PodSpecs and reports node status back to the master.
+
+💡 Q3: What is the difference between Horizontal Pod Autoscaler (HPA) and Vertical Pod Autoscaler (VPA)?
+📝 Answer:
+HPA scales the number of Pod replicas based on CPU/memory usage or custom metrics.
+VPA adjusts the resource requests/limits (CPU, memory) of individual Pods.
+👉 HPA = more Pods; VPA = bigger Pods.
+
+======
+
+
+🔧 DevOps Interview Prep – Kubernetes (AKS Focus)
+💡 Q1: What is the difference between a Pod and a Deployment in Kubernetes?
+📝 Answer:
+A Pod is the smallest deployable unit in Kubernetes, typically wrapping one or more containers.
+A Deployment manages Pods — it ensures the desired number of replicas are running and handles rolling updates and rollbacks.
+Think of a Deployment as the controller, and Pods as the workers.
+
+💡 Q2: How does Kubernetes handle service discovery?
+📝 Answer:
+Kubernetes uses Services and DNS for service discovery.
+Each Service gets a stable IP and DNS name.
+Pods can discover and communicate with other services using these DNS names (e.g., my-service.default.svc.cluster.local).
+Behind the scenes, kube-proxy and iptables manage routing.
+
+💡 Q3: What is a ConfigMap vs a Secret in Kubernetes?
+📝 Answer:
+ConfigMap: Stores non-sensitive configuration data (e.g., app settings, URLs).
+Secret: Stores sensitive data (e.g., passwords, tokens) in base64-encoded format.
+Both can be mounted as environment variables or volumes into Pods, but Secrets are encrypted at rest and access-controlled.
