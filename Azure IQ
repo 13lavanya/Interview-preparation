@@ -1,0 +1,341 @@
+1. How do you design a highly available architecture in Azure across regions?
+2. What happens when an Azure VM becomes unreachable? How do you troubleshoot step by step?
+3. How do you securely manage secrets using Azure Key Vault in applications?
+4. Your Azure App Service is slow after deployment. What will you check?
+5. How do you implement zero downtime deployment in Azure?
+6. What is the difference between Azure Load Balancer and Application Gateway, and when would you use each?
+7. How do you troubleshoot Azure Storage account access issues (403/Authentication failed)?
+8. A Kubernetes pod in AKS is not accessible externally. What could be wrong?
+9. How do you design network security in Azure (NSG, Subnets, Private Endpoints)?
+10. Your Azure DevOps pipeline fails intermittently. How do you debug it?
+11. How do you monitor applications using Azure Monitor and Log Analytics?
+12. What happens during an Azure VM scale set auto-scaling event?
+13. How do you implement disaster recovery in Azure?
+14. Your Azure SQL database is slow. What performance checks will you do?
+15. How do you manage cost optimization in Azure environments?
+
+☁️ Azure & Cloud
+ • What is a VNet and NSG in Azure?
+ • What is Azure AD (Microsoft Entra ID) and why is it used?
+ • How do you reduce and manage cloud costs effectively?
+
+=====
+
+Azure Basics 
+
+
+💡 Question 1:
+ What are the key components of Azure DevOps?
+📝 Answer:
+ Azure DevOps provides services like Boards, Repos, Pipelines, Test Plans, and Artifacts. These help teams manage work, code, builds, testing, and deployment in one place.
+💡 Question 2:
+ What is the difference between Azure Pipelines and GitHub Actions?
+📝 Answer:
+ Azure Pipelines is a CI/CD tool with deep Azure integration. GitHub Actions is GitHub-native, with YAML-based workflows. Both support containers, multiple environments, and secrets but vary in ecosystem and UI experience.
+💡 Question 3:
+ How do you handle secrets in Azure DevOps Pipelines?
+📝 Answer:
+ Use Azure Key Vault or Pipeline Secrets via Library Variables. These are encrypted and masked in logs. You can link secrets securely to pipelines via service connections.
+
+=====
+
+🔧 DevOps Interview Prep – Kubernetes (AKS Focus)
+
+💡 Q1: You notice that your AKS cluster is not scaling up even though CPU usage is high. What could be the issue?
+📝 Answer:
+Check if Cluster Autoscaler is enabled and properly configured
+Validate node pool limits and quotas
+Ensure HPA is targeting the correct metrics and thresholds
+Review resource requests/limits in Pod specs
+
+💡 Q2: You deployed a Pod that needs access to a secret, but it keeps failing. What steps do you take to debug?
+📝 Answer:
+Check if the Secret exists: kubectl get secret
+Validate volume mount or envFrom configuration in the Pod spec
+Ensure RBAC permissions allow access to the secret
+Use kubectl describe pod to inspect events and error messages
+
+💡 Q3: Your application is intermittently failing due to DNS resolution issues in AKS. How do you troubleshoot?
+📝 Answer:
+Check CoreDNS logs and pod health
+Validate DNS configuration in /etc/resolv.conf inside the Pod
+Ensure NetworkPolicies aren’t blocking DNS traffic
+Restart CoreDNS pods and test with nslookup or dig
+
+=====
+
+
+=====
+
+💡 Q1: How do you implement Infrastructure as Code (IaC)?
+ 📝 Answer:
+* Use tools like Terraform, ARM Templates, or Bicep for provisioning Azure resources
+* Store code in version control (e.g., Git) for auditability
+* Modularize Terraform code for reuse
+* Use remote backends like Azure Storage with state locking
+* Integrate IaC steps in your CI/CD pipeline for consistent infra automation
+
+💡 Q2: How do you manage secrets securely in Azure DevOps?
+ 📝 Answer:
+* Store secrets in Azure Key Vault
+* Use Azure DevOps variable groups linked to Key Vault
+* Enable access via managed identities or service principals
+* Avoid hardcoded credentials — use environment variables and secure pipelines
+* Audit secret access via Key Vault diagnostics logs
+
+💡 Q3: What deployment strategies do you recommend for zero-downtime delivery?
+ 📝 Answer:
+* Blue-Green Deployments: Route traffic to a new version, roll back quickly if needed
+* Canary Releases: Gradually expose new version to a small subset of users
+* Rolling Updates: Replace pods gradually to maintain service availability
+* Use health probes, traffic splitting, and feature flags for safety
+* Monitor success metrics (latency, errors) before full rollout
+
+=====
+
+
+💡 Question 1:
+How do you monitor infrastructure health in Azure DevOps workflows?
+📝 Answer:
+Use Azure Monitor and Log Analytics to track metrics and logs.
+✅ Integrate alerts into pipelines
+✅ Monitor CPU, memory, disk, and service health
+✅ Use dashboards for real-time visibility
+
+💡 Question 2:
+What are the best practices for auto-scaling VMs in Azure?
+📝 Answer:
+Use Virtual Machine Scale Sets (VMSS)
+Define scaling rules based on metrics (CPU, memory, etc.)
+Integrate with Azure Monitor for dynamic scaling
+👉 Ensures high availability and performance under load
+
+💡 Question 3:
+How do you ensure high availability and fault tolerance in Azure infrastructure?
+📝 Answer:
+Deploy across Availability Zones or Availability Sets
+Use Load Balancers to distribute traffic
+Monitor with Azure Monitor and set up auto-healing
+
+✅ Helps reduce downtime and improve resilience
+📚 Resource of the Day:
+🔗 Azure Monitor Overview – Microsoft Docs
+
+=====
+
+ 
+💡 Question 1:
+How can Azure DevOps pipelines be used to automate VM provisioning and configuration?
+📝 Answer:
+Use Infrastructure as Code (IaC) tools like Terraform, ARM templates, or Bicep.
+✅ Define VM specs in code
+✅ Use pipeline tasks to deploy and configure VMs
+✅ Ensure consistency across environments
+
+💡 Question 2:
+What are the best practices for managing storage in Azure DevOps workflows?
+📝 Answer:
+Use Blob Storage for build artifacts and logs
+Use Azure Files for shared access across VMs
+Automate uploads/downloads with Azure CLI or AzureFileCopy@4 task
+👉 Keep storage organized and secure with naming conventions and access policies
+
+💡 Question 3:
+How do you securely manage secrets and access controls in Azure DevOps?
+📝 Answer:
+Store secrets in Azure Key Vault
+Use Key Vault task or linked service connections to fetch secrets during pipeline execution
+Apply RBAC to restrict access to resources
+✅ Avoid hardcoding credentials
+✅ Audit access regularly
+
+=====
+
+
+💡 Question 1:
+ What’s the difference between a build pipeline and a release pipeline in Azure DevOps?
+📝 Answer:
+ Build Pipeline: Compiles code, runs tests, and creates artifacts.
+ Release Pipeline: Deploys those artifacts to environments like Dev, QA, or Prod.
+ 👉 Think: Build = prepare the code; Release = ship it.
+
+💡 Question 2:
+ What are pipeline triggers in Azure DevOps?
+📝 Answer:
+ Pipeline triggers determine when your pipeline runs:
+continuousIntegration: Triggers on every push.
+schedule: Runs on a specific schedule.
+pullRequest: Triggers on PR creation/update for validations.
+
+💡 Question 3:
+ How can you implement zero-downtime deployments in Azure App Services?
+📝 Answer:
+ Use Deployment Slots (e.g., staging and production).
+ ✅ Deploy to staging
+ ✅ Validate
+ ✅ Swap with production for seamless rollout
+
+=======
+
+
+
+1. How do you debug a production issue when logs show no errors?
+
+I start with request flow validation, infrastructure metrics, network latency, dependency health, and recent changes. Logs are only one signal; absence of errors doesn’t mean absence of failure.
+
+2. What steps do you follow when application latency suddenly increases?
+
+I compare baseline vs current latency, identify which layer changed (network, DB, cache, infra), check saturation signals, and validate traffic patterns before blaming code.
+
+3. How do you identify root cause when metrics look normal but users complain?
+
+I trust user experience metrics first, then trace end-to-end requests, check edge cases, timeouts, and regional or client-specific failures.
+
+4. What do you check first when a Kubernetes pod is running but traffic fails?
+
+Service routing, readiness probes, network policies, ingress configuration, and downstream dependencies.
+
+5. How do you troubleshoot intermittent failures that can’t be reproduced?
+
+I correlate failures with time, load, deployments, autoscaling events, and external dependencies instead of trying to reproduce locally.
+
+6. How do you verify whether a deployment actually changed runtime behavior?
+
+By checking configs, environment variables, feature flags, dependency versions, and infrastructure drift — not just code diffs.
+
+7. What do you analyze when database connections are exhausted but CPU is low?
+
+Connection pooling, slow queries, leaked connections, thread exhaustion, and application connection handling.
+
+8. How do you approach an incident involving multiple dependent services?
+
+I identify the blast radius, map dependencies, isolate the failing service, and reduce noise before deep debugging.
+
+9. What signals do you trust most during a live production outage?
+
+User impact metrics, error rates, latency, and traffic flow — not dashboards showing “green”.
+
+10. How do you confirm whether autoscaling is working as expected?
+By validating scaling triggers, metrics source, pod scheduling, node capacity, and cooldown behavior.
+
+11. How do you debug a pipeline that succeeds but produces a faulty release?
+
+I verify test coverage, artifact versioning, environment parity, and promotion logic rather than pipeline status.
+
+12. What would you investigate if a rollback doesn’t resolve the issue?
+
+Cached data, config changes, database state, external dependencies, and feature flags.
+
+13. How do you detect configuration drift in production systems?
+
+By comparing desired vs actual state using IaC, audit logs, and configuration management tools.
+
+14. What checks do you perform before declaring an incident resolved?
+
+I validate user experience, monitor stability over time, confirm alerts recovery, and document the fix
+
+15. How do you prioritize actions during a high-severity outage?
+
+=====
+
+1. Describe your experience with Azure Pipelines: building CI/CD for telecom-grade applications.
+
+2. How do you implement build and release pipelines using YAML in Azure DevOps?
+
+3. How have you integrated Azure DevOps with Kubernetes (AKS) for containerized services? 
+
+4. Explain blue-green or canary deployments using Azure DevOps and Azure App Service. 
+
+5. How do you manage secrets and credentials securely in pipelines (e.g. Azure Key Vault)? 
+
+6. What tagging/versioning strategy do you use for artifacts in Artifacts feed? 
+
+7. How do you enforce code quality and security scanning in Azure DevOps? (SonarQube, OWASP, etc.) 
+
+8. Describe your branching strategy (GitFlow, trunk-based) in Azure Repos for large teams. 
+
+9. How do you implement gated check-ins or PR policies in Azure Repos?
+
+10. How do approvals and gates work in release pipelines? 
+
+11. Explain container orchestration with Docker + AKS + Helm charts integrated into Azure DevOps. 
+
+12. How do you monitor deployments and application health using Azure Monitor and Application Insights? 
+
+13. How do you implement Infrastructure as Code in Azure DevOps (ARM, Terraform, Bicep)? 
+
+14. Explain deployment rings or environments strategy (Dev/Test/Prod) in Azure Pipelines. 
+
+15. How do you roll back a faulty deployment in Azure DevOps?
+
+16. What strategies do you use to optimize CI/CD pipeline performance (caching, parallel builds)? 
+
+17. How do you integrate automated testing (unit, integration, UI via Selenium) in pipelines? 
+
+18. Explain how you maintain compliance and security across environments (Azure Policy, RBAC). 
+
+19. How have you handled multi-cloud deployments or hybrid cloud scenarios with Azure DevOps? 
+
+20. How do you handle release management for confidential or regulated telecom infrastructure? 
+
+21. Describe a challenging pipeline you built and how you debugged/troubleshot failures. 
+
+22. How would you design CI/CD for microservices in Nokia’s telecom ecosystem?
+
+23. What metrics and dashboards do you use to track pipeline and deployment health? 
+
+24. Have you used Azure DevTest Labs or test environments automation? 
+
+25. How do you incorporate shift‑left security and vulnerability scanning into your pipelines? 
+
+
+======
+
+🔹 What is Azure Kubernetes Service and how does it work?
+ 🔹 What is the difference between AKS and self-managed Kubernetes?
+ 🔹 How do you create and manage AKS clusters?
+ 🔹 What are node pools in AKS?
+ 🔹 How does AKS integrate with Azure Active Directory?
+ 🔹 What is the role of Azure CNI in AKS networking?
+ 🔹 How do you secure Azure Kubernetes Service clusters?
+ 🔹 How do you manage ingress controllers in AKS?
+ 🔹 What is the role of kube-proxy in AKS?
+ 🔹 How do you deploy applications to AKS?
+ 🔹 How do you implement autoscaling in AKS?
+ 🔹 What is Cluster Autoscaler in AKS?
+ 🔹 How do you monitor AKS clusters using Azure Monitor?
+ 🔹 How do you troubleshoot failed Pods in AKS?
+ 🔹 How do you handle AKS version upgrades?
+ 🔹 How do you implement blue-green deployment in AKS?
+ 🔹 How do you manage secrets securely in AKS?
+ 🔹 How do you integrate AKS with CI/CD pipelines?
+ 🔹 What are common AKS production issues and fixes?
+ 🔹 What are best practices for AKS in production?
+
+===
+
+Quick self-introduction along with current roles and responsibilities.
+Explain how you created and automated CI/CD pipelines in Azure DevOps.
+How did you automate infrastructure deployment using Terraform.
+How do you connect Terraform deployments with Azure DevOps.
+Have you worked on on-prem to Azure migration? Explain the migration process.
+Have you created Azure Landing Zones? Explain your experience.
+What is Azure Application Gateway?
+Difference between Application Gateway and Load Balancer.
+Have you worked on AKS? What activities did you perform in AKS?
+How would you optimize cloud resource costs in Azure?
+What will you do if the Terraform state file gets corrupted?
+How do you prevent Terraform state corruption?
+What are the commonly used Terraform commands?
+How do you optimize CI/CD pipelines in Terraform?
+Based on the discussion, the focus areas were mainly:
+✅ Azure DevOps & CI/CD
+✅ Terraform & Infrastructure Automation
+✅ AKS & Kubernetes
+✅ Azure Cloud Architecture
+✅ Production Troubleshooting
+✅ Infrastructure Reliability
+✅ Automation & Monitoring
+
+
+
